@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "支付中心",
-  "usingComponents": {
-    "df-dialog-box": "../../component/DialogBox/DialogBox",
-    "df-countdown":"../../component/CountDown/CountDown"
-  }
-}

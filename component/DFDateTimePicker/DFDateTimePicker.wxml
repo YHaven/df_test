@@ -1,5 +1,0 @@
-<view>
-<picker mode="multiSelector" range='{{range}}' value='{{valueIndexArr}}' disabled='{{disabled}}' bindcolumnchange="bindcolumnchange" bindchange="bindchange" bindcancel="bindcancel">
-<slot></slot>
-</picker>
-</view>

@@ -1,6 +1,0 @@
-<!--component/DateTimePicker/DateTimePicker.wxml-->
-
-
-<picker mode="{{mode}}" range="{{range}}" range-key="{{rangeKey}}" value="{{value}}" disabled="{{disabled}}" start="{{start}}" end="{{end}}" fields="{{fields}}" custom-item="{{customItem}}" bindchange="bindchange" bindcolumnchange="bindcolumnchange" bindcancel="bindcancel">
-  <slot></slot>
-</picker>

@@ -1,7 +1,0 @@
-/* 登录页面 */
-.login-container{position: fixed;left: 0rpx;top: 0rpx;right: 0rpx;bottom: 0rpx;}
-.login-container .bg-img{width: 100%;height: 100%;}
-.login-container .login-view{position: absolute;left: 0rpx;top: 0rpx;right: 0rpx;bottom: 0rpx;z-index: 1;background: rgba(0, 0, 0, 0.5);text-align: center;}
-.login-container .login-view .login-btn{width: 582rpx;position: absolute;top: 680rpx;left: 50%;margin-left: -291rpx;}
-.login-container .login-view .login-btn .icon-text{display: inline-block;width: 46rpx;height: 37rpx;margin-right: 20rpx;}
-.login-container .login-view .login-btn image{width: 100%;height: 100%;float: left;margin-top: 6rpx;}

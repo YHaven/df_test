@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "昵称",
-  "usingComponents": {
-    "df-input": "../../component/DafengInput/DafengInput"
-  }
-}

@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "剧院详情",
-  "usingComponents": {
-    "df-richtextviewer": "../../component/RichTextViewer/RichTextViewer",
-    "df-scoreviewer": "../../component/ScoreViewer/ScoreViewer"
-  }
-}

@@ -1,7 +1,0 @@
-以剧团身份
-<view>
-  待审核
-  <button bindtap='doViewTap' data-url="/pages/operaAboutWaitConfirmList/operaAboutWaitConfirmList">查看更多</button>
-  待确认
-  <button bindtap='doViewTap' data-url="/pages/operaAboutWaitReceiveList/operaAboutWaitReceiveList">查看更多</button>
-</view>

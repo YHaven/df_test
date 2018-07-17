@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "经营体名称",
-  "usingComponents": {
-    "df-bottom-nav": "../../component/BottomNav/BottomNav",
-    "df-swipercalendar": "../../component/SwiperCalendar/SwiperCalendar"
-  }
-}

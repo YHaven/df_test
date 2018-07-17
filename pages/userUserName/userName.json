@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "用户名",
-  "usingComponents": {
-    "df-input": "../../component/DafengInput/DafengInput",
-    "top-msg-tips": "../../component/TopMsgTips/TopMsgTips"
-  }
-}

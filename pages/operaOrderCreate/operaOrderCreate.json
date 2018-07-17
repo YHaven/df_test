@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "确认预约单",
-  "usingComponents": {
-    "df-input": "../../component/DafengInput/DafengInput",
-    "df-datetime": "../../component/DFDateTimePicker/DFDateTimePicker",
-    "df-submit-inner-flow": "../../component/SubmitInnerFlow/SubmitInnerFlow"
-  }
-}

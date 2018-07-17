@@ -1,7 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "ideal-input-box": "../IdealInputBox/IdealInputBox",
-    "df-datetime":"../DFDateTimePicker/DFDateTimePicker"
-  }
-}

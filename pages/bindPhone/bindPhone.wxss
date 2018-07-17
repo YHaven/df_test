@@ -1,6 +1,0 @@
-/* 绑定手机页面 */
-.bind-phone{margin-top: 85rpx;}
-.bind-phone-login-btn{margin: 60rpx 30rpx;}
-.bind-phone-get-btn{color: #1aad19;position: fixed;bottom: 158rpx;left: 50%; width: 530rpx;margin-left: -265rpx;border: 0rpx;}
-.bind-phone-get-btn .icon-text{display: inline-block;width: 46rpx;height: 37rpx;margin-right: 15rpx;}
-.bind-phone-get-btn image{width: 100%;height: 100%;float: left;margin-top: 6rpx;}

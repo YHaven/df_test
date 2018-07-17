@@ -1,6 +1,0 @@
-/* pages/venueOrderList/venueOrderList.wxss */
-@import "../venueReservationList/venueReservationList.wxss";
-.data-item .entity-info{height: 64rpx;}
-.data-item .entity-info .name .icon-sydney1162852easyiconnet{float: left;color: #f94551;font-size: 42rpx;margin-right: 10rpx;}
-.item-v2 .label{width: 130rpx;word-spacing:42rpx;}
-.item-v2 .label.eposit{word-spacing: 4rpx;}

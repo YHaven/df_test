@@ -1,9 +1,0 @@
-<template name="TimeoutBoard">
-  <view class="timeout-board">
-    <view class="content text-c">
-      <image src="../../images/network_time_default.png"></image>
-      <view>连接超时</view>
-      <view class="refresh-btn" catchtap="refresh">刷新</view>
-    </view>
-  </view>
-</template>

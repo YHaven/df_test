@@ -1,7 +1,0 @@
-<!--component/TopSearch/TopSearch.wxml-->
-<view class="top-search clearfix">
-  <view class="search-box">
-     <df-input type="text" confirm-type="{{confirmType}}" focus="{{focus}}" value="{{value}}" placeholder="{{placeholder}}" placeholder-class="input-placeholder" bindconfirm="bindconfirm" bindinput="bindchange" icon-type="search"></df-input> 
-  </view>
-  <view class="search-btn btn-class" bindtap='search'>{{btnName}}</view>
-</view>

@@ -1,8 +1,0 @@
-/* 模态框公共样式 */
-.iyanyi-dialog{position: fixed;top: 0rpx;left: 0rpx;right: 0rpx;bottom: 0rpx;background: rgba(0, 0, 0, 0.7);z-index: 10;}
-.iyanyi-dialog .dialog{background: #ffffff;width: 560rpx;border-radius: 10rpx;margin: 0 auto;margin-top: 255rpx;text-align: center;font-size: 30rpx;}
-.iyanyi-dialog .dialog-header{height: 90rpx;padding-top: 15rpx;}
-.iyanyi-dialog .dialog-footer{border-top: 1px solid #d2d3d5;display: flex;font-size: 36rpx;}
-.iyanyi-dialog .cancel{border-right: 1px solid #d2d3d5;}
-.iyanyi-dialog .confirm{color: #09bb07;}
-.iyanyi-dialog .cancel,.iyanyi-dialog .confirm{flex: 1;padding: 32rpx 0rpx;}

@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "受约单详情",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "df-countdown": "../../component/CountDown/CountDown",
+    "df-submit-inner-flow": "../../component/SubmitInnerFlow/SubmitInnerFlow",
+    "df-check-phone-code": "../../component/CheckPhoneCode/CheckPhoneCode",
+    "df-submit-agree-order": "../../component/SubmitAgreeOrder/SubmitAgreeOrder",
+    "df-check-phone-code-only": "../../component/CheckPhoneCodeOnly/CheckPhoneCodeOnly",
+    "top-msg-tips": "../../component/TopMsgTips/TopMsgTips"
+  }
+}

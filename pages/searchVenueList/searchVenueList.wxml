@@ -1,0 +1,15 @@
+<view class="search-page" style="height: {{height}}px;">
+  <df-top-search btn-class="search-btn-color" focus value="{{keyword}}" placeholder="搜索场厅/剧院" bindchange="bindchange" btn-name="取消" bindsearch="cancel" confirm-type="search" bindconfirm="bindconfirm"></df-top-search>
+  <view class="search-result">
+    <view wx:if="{{dataList.items.length>0}}">
+      <view class="search-title">场厅</view>
+      <view wx:key="{{item.VenueRawId}}" bindtap="selectedItem" data-id='{{item.VenueRawId}}' data-type="item" data-name="{{item.VenueName}}" class="search-item {{index === dataList.items.length - 1? 'last-item':''}}" wx:for="{{dataList.items}}"><view>{{item.VenueName}}</view></view>
+    </view>
+    <view class="troupe-search-result" wx:if="{{dataList.troupes.length>0}}">
+      <view class="search-title">剧院</view>
+      <view wx:key="{{item.TheaterRawId}}" bindtap="selectedItem" data-id='{{item.TheaterRawId}}' data-type="troupe" data-name="{{item.TheaterName}}" class="search-item {{index === dataList.troupes.length - 1? 'last-item':''}}" wx:for="{{dataList.troupes}}"><view>{{item.TheaterName}}</view></view>
+    </view>
+    <view class="empty" wx:if="{{!isPreSpace && keyword && dataList.troupes.length === 0 && dataList.items.length === 0}}"><image class="empty-img" src="/images/empty_resource_default.png"></image><text class="empty-tip">没有找到相场厅</text>
+    </view>
+  </view>
+</view>

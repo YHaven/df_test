@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "剧团详情",
+  "usingComponents": {
+    "df-richtextviewer": "../../component/richTextViewer/richTextViewer",
+    "df-scoreviewer": "../../component/scoreViewer/scoreViewer"
+  }
+}

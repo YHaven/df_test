@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "top-msg-tips": "../../component/TopMsgTips/TopMsgTips"
+  }
+}

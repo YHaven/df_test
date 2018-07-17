@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "df-input": "../../component/DafengInput/DafengInput",
+    "df-top-search": "../../component/TopSearch/TopSearch",
+    "df-datetimepicker": "../../component/DateTimePicker/DateTimePicker",
+    "df-preview-image": "../../component/PreviewImage/PreviewImage",
+    "df-datetime": "../../component/DFDateTimePicker/DFDateTimePicker",
+    "df-topmsgtips": "../../component/WeToast/WeToast"
+  }
+}

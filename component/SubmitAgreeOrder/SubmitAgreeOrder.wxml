@@ -1,0 +1,100 @@
+<!-- 提交内部审批 start -->
+<view class="mask-box" bindtap="hideFlowBox"></view>
+<view class="submit-flow ">
+  <view class="common-submit-form">
+    <view class="form-section clearfix">
+      <view class="section-title">锁定场厅</view>
+      <view class="section-value">
+        <view class="input-box df-select-time clearfix">
+          <view class="start-time">
+            <view class="time-icon" wx:if="{{!beginTimeStr || beginTimeStr == ''}}"><text class="iconfont icon-rili1"></text></view>
+            <df-datetime mode="date" disabled="{{WorkFlowReturnStatus === 1}}" class="dfdt-ordercreate" value="{{beginTimeStr?beginTimeStr:atTime}}" bindchange="bindBeginTime">
+              <text class="text default" wx:if="{{!beginTimeStr || beginTimeStr == ''}}">开始时间</text>
+              <text class="text" wx:else>{{beginTimeStr}}</text>
+            </df-datetime>
+          </view>
+          <view class="split-line">~</view>
+          <view class="end-time">
+            <view class="time-icon" wx:if="{{!endTimeStr || endTimeStr == ''}}"><text class="iconfont icon-rili1"></text></view>
+            <df-datetime mode="date" disabled="{{WorkFlowReturnStatus === 1}}" class="dfdt-ordercreate" value="{{endTimeStr?endTimeStr:atTime}}" bindchange="bindEndTime">
+              <text class="text default" wx:if="{{!endTimeStr || endTimeStr == ''}}">结束时间</text>
+              <text class="text" wx:else>{{endTimeStr}}</text>
+            </df-datetime>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="form-section clearfix">
+      <view class="section-title">预留付款</view>
+      <view class="section-value">
+        <view class="input-box datetimes">
+          <view class="days">
+             <df-datetime bindchange="inputDays" value="{{inputDaysStr}}" start="1970-01-01" end="2100-01-01" class="input" fields="{{['day', 'hour', 'minute']}}" maxlength="2">{{days}}</df-datetime><text>天</text> 
+             <!-- <input name="days" type="number" maxlength="2" value="{{days}}"></input>天  -->
+          </view>
+          <view class="hours">
+          <df-datetime bindchange="inputDays" value="{{inputDaysStr}}" start="1970-01-01" end="2100-01-01" class="input" fields="{{['day', 'hour', 'minute']}}" maxlength="2">{{hours}}</df-datetime><text>小时</text>
+              <!-- <input name="hours" type="number" maxlength="2" value="{{hours}}"></input>小时   -->
+          </view>
+          <view class="minutes">
+          <df-datetime bindchange="inputDays" value="{{inputDaysStr}}" start="1970-01-01" end="2100-01-01" class="input" fields="{{['day', 'hour', 'minute']}}" maxlength="2">{{minutes}}</df-datetime><text>分钟</text>
+              <!-- <input name="minutes" type="number" maxlength="2" value="{{minutes}}"></input>分钟   -->
+          </view>
+        </view>
+        <view class="o">锁定时长结束后，若内部审批没有结束，将自动解锁档期 </view>
+      </view>
+    </view>
+    <view class="form-section clearfix">
+      <view class="section-title">剧组到达</view>
+      <view class="section-value">
+        <view class="input-box df-select-time clearfix">
+          <view class="start-time team-time">
+            <view class="time-icon"><text class="iconfont icon-rili1"></text></view>
+            <df-datetime mode="date" class="dfdt-ordercreate" value="{{teamArriveTimeStr?teamArriveTimeStr:atTime}}" bindchange="bindTeamArriveTime">
+              <text class="text default" wx:if="{{!teamArriveTimeStr || teamArriveTimeStr == ''}}">开始时间</text>
+              <text class="text" wx:else>{{teamArriveTimeStr}}</text>
+            </df-datetime>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="form-section clearfix">
+      <view class="section-title">剧组离开</view>
+      <view class="section-value">
+        <view class="input-box df-select-time clearfix">
+          <view class="end-time team-time">
+            <view class="time-icon"><text class="iconfont icon-rili1"></text></view>
+            <df-datetime mode="date" class="dfdt-ordercreate" value="{{teamLeaveTimeStr?teamLeaveTimeStr:atTime}}" bindchange="bindTeamLeaveTime">
+              <text class="text default" wx:if="{{!teamLeaveTimeStr || teamLeaveTimeStr == ''}}">离开时间</text>
+              <text class="text" wx:else>{{teamLeaveTimeStr}}</text>
+            </df-datetime>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="bank-info" wx:if="{{aboutBaseInfo.BankAccountName}}">
+    <view class="item">
+      <text class="label">银 行 户 名：</text>
+      <text>{{aboutBaseInfo.BankAccountName}}</text>
+    </view>
+    <view class="item">
+      <text class="label">收 款 银 行：</text>
+      <text>{{aboutBaseInfo.BankAccount}}</text>
+    </view>
+    <view class="item">
+      <text class="label">银 行 账 号：</text>
+      <text>{{aboutBaseInfo.BankName}}</text>
+    </view>
+    <view class="item">
+      <text class="label min">联  行  号：</text>
+      <text>{{aboutBaseInfo.LinkBankNo}}</text>
+    </view>
+  </view>
+  <view class="no-bank-info" wx:else>暂无默认收款银行账户，去PC端设置后才能同意受约！ </view>
+  <button class="submit-flow-btn iyanyi-btn-warning" hover-class="iyanyi-btn-warning-hover" bindtap="submitFlow">
+    提交内部审批
+  </button>
+</view>
+
+<!-- 提交内部审批 end -->

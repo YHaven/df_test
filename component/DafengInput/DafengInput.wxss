@@ -1,0 +1,9 @@
+/* component/DafengInput/DafengInput.wxss */
+.df-search-bar__box{position:relative;padding-right:60rpx;width:100%;box-sizing:border-box;z-index:1}
+.df-search-bar__input{height:56rpx;line-height:56rpx;font-size:28rpx}
+.df-icon-clear{position:absolute;top:0;right:0;z-index: 2;display: flex;justify-content: flex-end; align-items: center;height: 100%; width: 60rpx;padding-right: 22rpx;}
+.df-icon-clear icon {width: 30rpx; height: 30rpx;}
+/* .df-search-bar__label{position:absolute;top:0;right:0;bottom:0;left:0;z-index:2;border-radius:3px;text-align:center;color:#9b9b9b;background:#fff;line-height:28px} */
+.df-icon-search_in-box{position:absolute;left:0;top:0;width:28rpx; height:100%; display: flex; justify-content: flex-start; padding-left:16rpx;padding-right: 12rpx; align-items: center;}
+/* input */
+.input-placeholder{color: #b2b2b2;}

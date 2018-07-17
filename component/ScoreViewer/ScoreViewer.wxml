@@ -1,0 +1,29 @@
+<!--component/ScoreViewer/ScoreViewer.wxml-->
+<view class="whole clearfix" bindtap="showDetail">
+    <image class = "scroeImg" src="{{scoreImageSrcs[0]}}"></image>
+    <image class = "scroeImg" src="{{scoreImageSrcs[1]}}"></image>
+    <image class = "scroeImg" src="{{scoreImageSrcs[2]}}"></image>
+    <image class = "scroeImg" src="{{scoreImageSrcs[3]}}"></image>
+    <image class = "scroeImg" src="{{scoreImageSrcs[4]}}"></image>
+    <text>详情</text>
+</view>
+<!-- 转账须知对话框 start -->
+<!-- 自定义模态框 start -->
+  <!-- <df-dialog-box my-class="score-detail" isOpen="{{showTransferRuleBox}}" title="转账须知"></df-dialog-box> -->
+  <view class="iyanyi-dialog score-detail" wx:if="{{isShowDetail}}">
+    <view class="dialog">
+      <view class="dialog-header">
+        <text class="title">剧院评分</text>
+      </view>
+      <view class="dialog-body">
+        <view>·使用<text class="strong">网银转账</text>时请务必将<text class="strong">付款识别码</text>填写到<text class="strong">用途、附言或备注</text>中;</view>
+        <view>·使用<text class="strong">柜台转账</text>时请务必将<text class="strong">付款识别码</text>填写到<text class="strong">用途</text>中;</view>
+        <view>·如未填写付款识别码，造成损失，请自行承担。</view>
+      </view>
+      <view class="dialog-footer">
+        <view class="confirm" bindtap="showDetail">知道了</view>
+      </view>
+    </view>
+  </view>
+<!-- 自定义模态框 end -->
+<!-- 转账须知对话框 end -->

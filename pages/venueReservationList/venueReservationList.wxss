@@ -1,0 +1,19 @@
+/* pages/venueReservationList/venueReservationList.wxss */
+@import "../operaOrderList/operaOrderList.wxss";
+.data-item .entity-info{height: 128rpx;margin-left: 0rpx;padding-left: 20rpx;padding-right: 0rpx;}
+.data-item .entity-info .item{padding-right:20rpx;border-bottom: 1px solid #e5e5e5;}
+.data-item .entity-info .item:last-child{border-bottom: 0px solid #e5e5e5;}
+.data-item .entity-info .name .icon-wenyiyanchutuantifuzhi{float: left;color: #3f7ac7;font-size: 42rpx;margin-right: 10rpx;}
+.data-item .entity-info .name .icon-tiaozhuanjiantou{color: #c7c7cc;margin-left: 12rpx;font-size: 38rpx;}
+.data-item .entity-info .name .e-name{float: left;max-width: 400rpx;overflow: hidden;text-overflow: ellipsis;white-space:nowrap;}
+.data-item .entity-info .name .icon-wode1{float: left;color: #3ebfef;font-size: 42rpx;margin-right: 10rpx;}
+.data-item .entity-info .opera .name{width: auto;overflow: inherit;}
+.data-item .entity-info .opera .name .e-name{max-width: 620rpx;}
+
+.data-item .left{float: left;width: 180rpx;}
+.data-item .item-image{width: 180rpx;height: 117rpx;margin-bottom: 10rpx;}
+.data-item .item-info{margin-left: 218rpx;}
+.data-item .left .name{width: 180rpx; color: #a9a9a9;font-size: 30rpx;overflow: hidden;text-overflow: ellipsis;white-space:nowrap;text-align: center;}
+.data-item .item-v2 view{padding-bottom: 10rpx;}
+.data-item .item-v2 .time{color: #a9a9a9;}
+

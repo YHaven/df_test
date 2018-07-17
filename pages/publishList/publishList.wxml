@@ -1,0 +1,7 @@
+<import src="../../component/TopMsgTip/TopMsgTip.wxml"/>
+<import src="../../component/MessageToast/MessageToast.wxml"/>
+<view class="container">
+    <template is="TopMsgTip" wx:if="{{errorMsg}}" data="{{message:errorMsg,animationData:animationData}}"/> 
+    <!-- 底部导航 -->
+    <df-bottom-nav navActive="4"></df-bottom-nav>
+</view>

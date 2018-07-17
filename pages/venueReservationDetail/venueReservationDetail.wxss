@@ -1,0 +1,29 @@
+/* pages/venueReservationDetail/venueReservationDetail.wxss */
+@import "../operaOrderDetail/operaOrderDetail.wxss";
+.order-user{font-size: 26rpx;}
+.order-user .user-info .value{margin-left: 0rpx;height: 38rpx;}
+.order-user .info{padding: 17rpx 0rpx;border-bottom:1rpx solid #dddddd;}
+.order-user .info .overflow-point{float: left;display: block;width: 620rpx;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.order-user .leave-mark{border-top: 0rpx;}
+.order-user .user-icon{width: 50rpx;text-align: center;}
+.order-user .user-icon .icon-yonghu{float: left;margin-top: 5rpx;margin-left:8rpx;}
+.order-user .user-icon .icon-wenyiyanchutuantifuzhi{color: #3f7ac7;font-size: 50rpx;float: left;margin-top: -8rpx;}
+.order-user .user-icon .icon-wode1{color: #3ebfef;font-size: 50rpx;float: left;margin-top: -5rpx;}
+.order-user .icon-tiaozhuanjiantou{float: right;font-size: 40rpx;color: #c7c7cc;margin-right: 20rpx;}
+.order-user .leave-mark{padding: 20rpx 30rpx 20rpx 0rpx;}
+.order-user .leave-mark .title{font-size: 30rpx;}
+.order-user .leave-mark .value{color: #000000;}
+.order-info .item-name{margin-left: 20rpx;line-height: 64rpx;height: 64rpx;}
+.show-schedule-list{background: #f1f1f1;padding: 20rpx 0rpx;}
+.show-schedule-list .item-time{margin: 0rpx;margin-left: 20rpx;}
+.show-schedule-list .item-time .title{word-spacing:55rpx;}
+.show-schedule-list .item-time.leave{margin: 0rpx;margin-left: 20rpx;padding: 0rpx;}
+.total-price.common-form-2{margin-top: 10rpx;}
+.total-price.common-form-2 .form-section{border-bottom:0rpx;height: 50rpx;}
+.total-price.common-form-2 .form-section .section-title,.total-price.common-form-2 .form-section .section-value{height: 50rpx;line-height: 50rpx;}
+.total-price.common-form-2 .form-section.total{border-top: 1rpx solid #e5e5e5;height: 80rpx;line-height: 80rpx;margin-top: 10rpx;} 
+.total-price.common-form-2 .form-section.total .section-title,.total-price.common-form-2 .form-section.total .section-value{height: 80rpx;line-height: 80rpx;}
+.iyanyi-opration button{margin-top: 18rpx;width: 120rpx;height: 60rpx;line-height: 60rpx;font-size: 28rpx;}
+.iyanyi-opration .pay_ide{float: left;font-size: 24rpx;margin-top: 30rpx;margin-right: 28rpx;margin-left: 20rpx;}
+.pay_ide .pay_ide_icon{width: 41rpx;height: 35rpx;float: right;margin-left: 10rpx;}
+.pay_ide .pay_ide_icon image{width: 100%;height: 100%;}

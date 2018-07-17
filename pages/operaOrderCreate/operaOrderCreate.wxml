@@ -1,0 +1,198 @@
+<import src="../../component/TimeoutBoard/TimeoutBoard.wxml"/>
+<import src="../../component/TopMsgTip/TopMsgTip.wxml"/>
+<!-- 请求超时模板 默认false-->
+<template is="TimeoutBoard" wx:if="{{netTimeOut}}"/>  
+
+<view class="container opera-order-create" wx:else>
+  <template is="TopMsgTip" wx:if="{{errorMsg}}" data="{{message:errorMsg,animationData:animationData}}"/> 
+  <!-- 预约人 start -->
+  <view class="block order-user">
+    <view class="user-image">
+       <image src="{{defaultImg.userDefault}}"></image> 
+      <!-- <text class="iconfont icon-yonghu"></text> -->
+    </view>
+    <view class="user-info">预约人： 
+      <text>{{tradeApplyDisplay.LinkerFullName}}</text> 
+      <text class="phone">{{tradeApplyDisplay.LinkerPhone}}</text>
+    </view>
+  </view>
+  <!-- 预约人 end -->
+
+  <!-- 填写预约单 start -->
+  <view class="block order-form common-form-2">
+    <view class="form-section">
+      <view class="section-title">浮动费用</view>
+      <view class="section-value">
+        <input wx:if="{{HasAddiPrice}}" type="text" class="fee" bindinput="bindInputAdditionalPrice" 
+               bindblur='bindBlurAdditionalPrice' bindfocus='bindFocusAdditionalPrice'
+               value="{{AdditionalPrice || ''}}" placeholder="￥请输入浮动费用">
+        </input>
+      </view>
+      <view class="section-op">
+         <switch class="wx-switch-input" checked="{{HasAddiPrice}}" bindchange="switch1Change"/> 
+      </view>
+    </view>
+    <view class="form-section">
+      <view class="section-title">表演场厅</view>
+      
+      <view class="section-op">
+        <picker wx:if="{{hasAnyVenue}}" bindtap="getVenueList" bindchange="bindVenueChange" 
+            value="{{selectedVenueIndex}}" range="{{VenueListDisplay}}" range-key="Name">
+          <view style=" display: flex;justify-content: center;align-items: center;">
+            <text class="{{selectedVenueName && selectedVenueName != '' ? 'font-ticked' : ''}}">{{selectedVenueName && selectedVenueName != '' ? selectedVenueName : '请选择'}}</text>
+            <text class="iconfont icon-tiaozhuanjiantou" style="font-size: 50rpx;"></text></view>
+        </picker>
+        <view wx:if="{{!hasAnyVenue}}" bindtap="popNoVenueError">
+          <text>请选择</text><text class="iconfont icon-tiaozhuanjiantou"></text>
+        </view>
+      </view>
+    </view>
+    <view class="form-section">
+      <view class="section-title">场厅档期</view>
+      <view class="section-value">
+        <view class="df-select-time clearfix">
+          <view class="start-time">
+            <view class="time-icon"><text class="iconfont icon-rili1"></text></view>
+            <df-datetime mode="date" class="dfdt-ordercreate" value="{{tradeApplyDisplay.VenueScheduleBeginTime?tradeApplyDisplay.VenueScheduleBeginTime:schedPickerDefault.showAt}}" bindchange="bindSelfSchedueBegin">
+              <text class="text default" wx:if="{{!tradeApplyDisplay.VenueScheduleBeginTime || tradeApplyDisplay.VenueScheduleBeginTime == ''}}">开始日期</text>
+              <text class="text" wx:else>{{tradeApplyDisplay.VenueScheduleBeginTime}}</text>
+            </df-datetime>
+          </view>
+          <view class="split-line">~</view>
+          <view class="end-time">
+            <view class="time-icon"><text class="iconfont icon-rili1"></text></view>
+            <df-datetime mode="date" class="dfdt-ordercreate" value="{{tradeApplyDisplay.VenueScheduleEndTime?tradeApplyDisplay.VenueScheduleEndTime:schedPickerDefault.showAt}}" bindchange="bindSelfSchedueEnd">
+              <text class="text default" wx:if="{{!tradeApplyDisplay.VenueScheduleEndTime || tradeApplyDisplay.VenueScheduleEndTime == ''}}">结束日期</text>
+              <text class="text" wx:else>{{tradeApplyDisplay.VenueScheduleEndTime}}</text>
+            </df-datetime>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 填写预约单 end -->
+
+  <!-- 预约单信息 start -->
+  <view class="block order-info">
+    <view class="item-info">
+      <view class="troupe-name">{{troupeDisplay.Name}}</view>
+      <view class="opera-base">
+        <view class="opera-image">
+          <image src='{{ItemDisplay.UrlSmallThumbnail}}'></image>
+        </view>
+        <view class="opera-info">
+          <view class="opera-name">{{ItemDisplay.Name}}</view>
+          <view class="info-1">
+            <text class="times">{{ItemDisplay.ShowMinutes}}分钟</text>
+            <text class="types">{{!ItemDisplay.ShowType || ItemDisplay.ShowType == '' ? '      ' : ItemDisplay.ShowType}}</text>
+          </view>
+          <view class="info-2">
+            <text class="first-show">首演：{{ItemDisplay.FirstShowDate || '暂无'}}</text>
+            <text class="show-people">巡演：{{ItemDisplay.TourShowActorCount ? ItemDisplay.TourShowActorCount + '人' : '未知' }}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="show-schedule-list">
+      <view class="item-time">
+        <text class="title">剧组到达:</text>
+        <text class="time">{{tradeApplyDisplay.TeamArriveTime}}</text>
+      </view>
+      <view class="item-show-list">
+        <view class="show-item clearfix {{showMore?'show':'hide'}} {{dataIndex === 0 ?'first':'next'}}" wx:for="{{tradeApplyDisplay.Schedules}}" wx:for-index="dataIndex" wx:key="ScheduleBeginDatetime">
+          <!-- <view class="show-time" wx:if="{{item.ScheduleDatetime.status === 0}}">
+            <view class="title">第{{dataIndex+1}}场演出:</view>
+            <view class="time">
+              <view>{{item.ScheduleDatetime.timeStr}}</view>
+            </view>
+          </view> -->
+          <view class="show-time is-more-date">
+            <view class="title">第{{dataIndex+1}}场演出:</view>
+            <view class="time">
+              <view>{{item.ScheduleBeginDatetime}}<text class="start">起</text></view>
+              <view>{{item.ScheduleEndDatetime}}<text class="end">止</text></view>
+            </view>
+          </view>
+          <view class="show-price">
+            <view class="price">
+              <text class="point"></text><text>演出价：</text><text>¥{{item.Price}}</text>
+            </view>
+            <view class="eposit-price">
+              <text class="point"></text><text>预约金：</text><text class="s-price">¥{{item.EpositPrice}}</text>
+            </view>
+          </view>
+        </view>
+        <text class="iconfont icon-zhankai down-icon {{showMore?'up':''}}" wx:if="{{tradeApplyDisplay.Schedules.length > 1}}" bindtap="showMoreShows"></text>
+      </view>
+      <view class="item-time leave">
+        <text class="title">剧组离开:</text>
+        <text class="time">{{tradeApplyDisplay.TeamLeaveTime}}</text>
+      </view>
+    </view>
+    
+    <view class="leave-remark">
+      <view class="label-for">留言：</view>
+      <df-input class="clear-input" placeholder="选填，给剧团留言" maxlength="300" value="{{tradeApplyDisplay.LeaveMessage}}" bindinput="bindLeaveMessage"></df-input>
+    </view>
+  </view>
+  <!-- 预约单信息 end -->
+
+  <!-- 价格统计 start -->
+  <view class="block total-price common-form-2">
+    <view class="form-section">
+      <view class="section-title">演出价</view>
+      <view class="section-value">¥{{tradeApplyDisplay.TotalPrice}}</view>
+    </view>
+    <view class="form-section">
+      <view class="section-title">浮动费用</view>
+      <view class="section-value">
+        <text wx:if="{{HasAddiPrice && tradeApplyDisplay.AddiPriceNum && tradeApplyDisplay.AddiPriceNum != 0}}" 
+              class="iconfont icon-jiantou icon-jiantou{{(tradeApplyDisplay.IsGrowUp ? '-up' : '-down')}}"></text> 
+        ¥{{tradeApplyDisplay.AdditionalPriceAbs}}
+      </view>
+    </view>
+    <view class="form-section">
+      <view class="section-title" bindtap="showOrderRule"><icon type="info" size="20"></icon> 预约须知</view>
+      <view class="section-value">总金额:¥{{tradeApplyDisplay.FinalPrice}}</view>
+    </view>
+  </view>
+
+  <!-- 价格统计 end -->
+
+  <!-- 底部固定 start -->
+  <view class="order-foot-btn clearfix">
+    <view class="order-price">
+      共<text>{{tradeApplyDisplay.Schedules.length}}</text>场，预约金：<text class="price">¥{{tradeApplyDisplay.TotalEpositPrice}}</text>
+    </view>
+    <view class="order-action" bindtap="submitOrder">提交预约单</view>
+  </view>
+  <!-- 底部固定 end -->
+
+  <!-- 自定义模态框 start -->
+  <view class="iyanyi-dialog show-order-rule" wx:if="{{showOrderRuleBox}}">
+    <view class="dialog">
+      <view class="dialog-header">
+        <text class="title">预约须知</text>
+      </view>
+      <view class="dialog-body">
+        <view>·提交预约单后，等待受约方同意审核;</view>
+        <view>·受约方同意预约后，您须在指定时间内，线下支付预约金，并线上输入打款信息，受约方收款成功后，预约成功;</view>
+        <view>·预约成功后，进入报批流程，合同签署流程。</view>
+      </view>
+      <view class="dialog-footer">
+        <view class="confirm" bindtap="hideOrderRule">知道了</view>
+      </view>
+    </view>
+  </view>
+  <!-- 自定义模态框 end -->
+
+  
+
+  <!-- 提交内部审批 start -->
+  <df-submit-inner-flow wx:if="{{showSubmitFlowBox}}" bindsubmitFlow="bindReceiverChange" bindhideFlowBox="hideFlowBox" 
+      receiverList="{{reportToListDisplay}}" workFlowFirstNodeMark="{{flowFirstNodeMark}}">
+  </df-submit-inner-flow> 
+  
+  <!-- 提交内部审批 end -->
+
+</view>

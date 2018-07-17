@@ -1,0 +1,11 @@
+/* component/richTextViewer/richTextViewer.wxss */
+@import "../../style/index.wxss";
+@import "../wxParse/wxParse.wxss";
+.item {height:87rpx;border-bottom:solid 1rpx #e5e5e5;line-height: 87rpx;} 
+.content-block{ width: 100%}
+.content-block .title{float: left;}
+.content-block .iconView{margin-right: 40rpx;float: right;}
+.content-block .iconfont{font-size: 30rpx;}
+
+.icon-xiala {width: 24rpx; height: 15rpx;display: inline-block;color: #000000 !important;} 
+.icon-xiala.up {transform: rotate(180deg);color: #f94551 !important;}

@@ -1,0 +1,8 @@
+<!--component/DafengInput/DafengInput.wxml-->
+<view class="df-search-bar__box class" style="padding-left: {{iconType ? '30px':'0'}}">
+    <icon wx:if="{{iconType}}" class="df-icon-search_in-box" type="{{iconType}}" size="12"></icon>
+    <input maxlength='{{maxlength}}' type="{{type}}" class="df-search-bar__input" placeholder="{{placeholder}}" confirm-type="{{confirmType}}" value="{{value}}" focus="{{focus}}" bindinput="bindinput" bindblur='bindblur' bindfocus='bindfocus' bindtap="bindtap" bindconfirm="bindconfirm" />
+    <view class="df-icon-clear" wx:if="{{value.length > 0}}" bindtap="clickClear">
+        <icon type="clear" size="15" color="#dddddd"></icon>
+    </view>
+</view>

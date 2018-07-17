@@ -1,0 +1,43 @@
+.flow-status{height: 104rpx;background: #f94551;color: #ffffff;padding: 0rpx 44rpx;font-size: 28rpx;margin-bottom: 20rpx;}
+.flow-status .one-line{padding-top: 32rpx;}
+.flow-status .two-line{padding-top: 15rpx;}
+.flow-status .two-line .v-2{font-size: 24rpx;word-spacing: 10rpx;}
+.timeCountDown{display: inline-block;}
+
+.order-info{padding: 20rpx 30rpx 18rpx 20rpx;font-size: 30rpx;}
+.order-info .name{word-break: break-all; overflow: hidden; text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;margin-bottom: 30rpx;word-break: break-all;}
+
+.need-pay{padding-left: 20rpx;padding-right: 30rpx;font-size: 26rpx;height: 68rpx;line-height: 68rpx;}
+.need-pay .label{float: left;}
+.need-pay .value{float: right;color: #f94551;}
+
+.pay-info{padding-bottom: 120rpx;font-size: 26rpx;}
+.pay-info .head-info{padding-left: 20rpx;padding-right: 30rpx;padding-bottom: 18rpx;}
+.pay-info .head-info .title{margin-top: 20rpx;line-height: 40rpx;height: 40rpx;}
+.pay-info .head-info .rule{color: #a9a9a9;}
+.pay-info .head-info .icon-exclamation-circle{margin-top:-15rpx;margin-right: 8rpx; color: #ffc600;}
+.pay-info .head-info .t-2{font-size: 24rpx;word-break: break-all;color: #a9a9a9;}
+.pay-info .head-info .t-2 text{color: #ff7200;}
+.pay-info .bank-info{background: #f1f1f1;padding:25rpx 30rpx 1rpx 20rpx;}
+.pay-info .bank-info .item{margin-bottom: 24rpx;}
+.pay-info .bank-info .label{color: #a9a9a9;}
+.pay-info .bank-info .label.min{word-spacing: 18rpx;}
+
+.pay-info .pay-image{padding-top: 40rpx;padding-bottom: 48rpx;text-align: center;}
+.pay-info .pay-image .title{font-size: 24rpx;}
+.pay-info .pay-image .upload-image{width: 312rpx;height: 203rpx;margin: 28rpx auto;border:1px dashed #e5e5e5;}
+.pay-info .pay-image .o{font-size: 20rpx;color: #9b9ea0;}
+.pay-info .uploaded{width: 100%;height: 100%;overflow: hidden;}
+.pay-info .uploaded image{width: 100%;height: 100%;}
+.pay-info .pay-image .no-upload{margin-top: 54rpx;}
+.pay-info .no-upload .icon{width: 66rpx;height: 54rpx;margin: 0 auto;}
+.pay-info .no-upload .icon image{width: 100%;height: 100%;}
+.pay-info .no-upload .label{color: #9b9ea0;font-size: 26rpx;margin-top: 15rpx;}
+
+.bottom-btn{position: fixed;bottom: 0rpx;width: 100%;height: 100rpx;}
+.bottom-btn button{height: 100rpx;line-height: 100rpx;border-radius: 0rpx;}
+
+.show-transfer-rule .title{display: block;width: 360rpx;margin: 0 auto;margin-top: 30rpx;overflow: hidden;text-overflow:ellipsis;white-space:nowrap;}
+.show-transfer-rule .dialog-body{text-align: left;padding: 20rpx;font-size: 26rpx;}
+.show-transfer-rule .dialog-body .strong{color: #ffc600;}
+.show-transfer-rule .dialog-body view{margin-bottom: 10rpx;}

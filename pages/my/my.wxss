@@ -1,0 +1,27 @@
+.container{margin:20rpx auto;}
+/*头像样式*/
+.commonInfo{height:50px;background: #fff;padding:15px 15px;}
+.left{height:50px;}
+.left .title{display:inline-block;height:50px;line-height: 50px;margin-left:15px;vertical-align: top;}
+.left .content{display:inline-block;}
+.left .content.uc-headImg{width:50px;height:50px;border-radius: 25px;}
+.commonInfo .content.arrow{display:block;width:16px;height:16px;margin-top:-32px;float:right}
+
+/*内容样式*/
+.change,.myEntity,.operaOrder,.operaOrderBy{height:30px;background: #fff;padding:5px 15px;margin-top:22rpx;}
+.change .left,
+.myEntity .left,
+.operaOrder .left,
+.operaOrderBy .left{display:block;position:relative;height:30px;}
+.change .left .title,
+.myEntity .left .title,
+.operaOrder .left .title,
+.operaOrderBy .left .title{display:inline-block;height:30px;line-height: 30px;margin-left:15px;vertical-align: top;}
+.change .left .icon-qiehuan,
+.myEntity .left .icon-qiehuan,
+.operaOrder .left .icon-qiehuan,
+.operaOrderBy .left .icon-qiehuan{display:inline-block;width:30px;height:30px;border-radius: 15px;color:#01cddf;}
+.change .content.arrow,
+.myEntity .content.arrow,
+.operaOrder .content.arrow,
+.operaOrderBy .content.arrow{display:block;width:16px;height:16px;margin-top:-23px;float:right}

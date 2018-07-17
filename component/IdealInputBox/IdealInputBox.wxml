@@ -1,0 +1,11 @@
+<!--component/IdealInputBox/IdealInputBox.wxml-->
+<view class="ideal-input-box">
+  <input placeholder="{{placeholder}}" placeholder-class="input-placeholder" placeholder="{{placeholder}}" value="{{value}}" focus="{{focus}}" bindinput="idealInput" bindblur='bindblur' bindfocus='bindfocus' bindtap="bindtap"></input>
+  <scroll-view class="ideal-list" scroll-y wx:if="{{isFocus && (value.length>0 || initType === 'all')}}" style="max-height:{{maxHeight}}">
+    <block wx:if="{{showIdealList.length>0}}">
+    <view class="ideal-list-item" wx:if="{{dataIndex < maxLength}}"  wx:for="{{showIdealList}}" wx:for-index="dataIndex" wx:for-item="dataItem" wx:key="data" bindtap="idealItemTap" data-index="{{dataIndex}}">{{dataItem.label}}</view>
+    </block>
+    <view wx:else class="ideal-list-item no-data">无数据</view>
+  </scroll-view>
+</view>
+

@@ -1,0 +1,62 @@
+<!-- 提交内部审批 start -->
+<view class="mask-box" bindtap="hideFlowBox"></view>
+<view class="submit-flow ">
+  <view class="common-submit-form" style="height:{{idealFocusHeight}}">
+    <view class="form-section clearfix">
+      <view class="section-title">审 批 人</view>
+      <view class="section-value">
+        <view class="input-box">
+          <ideal-input-box placeholder="手机号/姓名" initType="all" bindidealInput="bindReceiverInput" idealList="{{idealList}}" maxHeight="280rpx" bindfocus="idealFocus" bindblur="idealBlur"></ideal-input-box>
+        </view>
+        <view class="o">{{workFlowFirstNodeMark}}</view>
+      </view>
+    </view>
+    <view class="form-section clearfix" wx:if="{{hasAgreeFlow}}">
+      <view class="section-title">锁定场厅</view>
+      <view class="section-value">
+        <view class="input-box df-select-time clearfix">
+          <view class="start-time">
+            <view class="time-icon" wx:if="{{!beginTimeStr || beginTimeStr == ''}}"><text class="iconfont icon-rili1"></text></view>
+            <df-datetime mode="date" class="dfdt-ordercreate" value="{{beginTimeStr?beginTimeStr:atTime}}" bindchange="bindBeginTime">
+              <text class="text default" wx:if="{{!beginTimeStr || beginTimeStr == ''}}">开始时间</text>
+              <text class="text" wx:else>{{beginTimeStr}}</text>
+            </df-datetime>
+          </view>
+          <view class="split-line">~</view>
+          <view class="end-time">
+            <view class="time-icon" wx:if="{{!endTimeStr || endTimeStr == ''}}"><text class="iconfont icon-rili1"></text></view>
+            <df-datetime mode="date" class="dfdt-ordercreate" value="{{endTimeStr?endTimeStr:atTime}}" bindchange="bindEndTime">
+              <text class="text default" wx:if="{{!endTimeStr || endTimeStr == ''}}">结束时间</text>
+              <text class="text" wx:else>{{endTimeStr}}</text>
+            </df-datetime>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="form-section clearfix">
+      <view class="section-title">锁定时长</view>
+      <view class="section-value">
+        <view class="input-box datetimes">
+          <view class="days">
+             <df-datetime bindchange="inputDays" value="{{inputDaysStr}}" start="1970-01-01" end="2100-01-01" class="input" fields="{{['day', 'hour', 'minute']}}" maxlength="2">{{days}}</df-datetime><text>天</text> 
+             <!-- <input name="days" type="number" maxlength="2" value="{{days}}"></input>天  -->
+          </view>
+          <view class="hours">
+          <df-datetime bindchange="inputDays" value="{{inputDaysStr}}" start="1970-01-01" end="2100-01-01" class="input" fields="{{['day', 'hour', 'minute']}}" maxlength="2">{{hours}}</df-datetime><text>小时</text>
+              <!-- <input name="hours" type="number" maxlength="2" value="{{hours}}"></input>小时   -->
+          </view>
+          <view class="minutes">
+          <df-datetime bindchange="inputDays" value="{{inputDaysStr}}" start="1970-01-01" end="2100-01-01" class="input" fields="{{['day', 'hour', 'minute']}}" maxlength="2">{{minutes}}</df-datetime><text>分钟</text>
+              <!-- <input name="minutes" type="number" maxlength="2" value="{{minutes}}"></input>分钟   -->
+          </view>
+        </view>
+        <view class="o">锁定时长结束后，若内部审批没有结束，将自动解锁档期 </view>
+      </view>
+    </view>
+  </view>
+  <button class="submit-flow-btn iyanyi-btn-warning" hover-class="iyanyi-btn-warning-hover" bindtap="submitFlow">
+    提交内部审批
+  </button>
+</view>
+
+<!-- 提交内部审批 end -->

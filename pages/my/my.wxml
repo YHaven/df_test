@@ -1,0 +1,53 @@
+<import src="../../component/TopMsgTip/TopMsgTip.wxml"/>
+<import src="../../component/MessageToast/MessageToast.wxml"/>
+<view class="container">
+    <template is="TopMsgTip" wx:if="{{errorMsg}}" data="{{message:errorMsg,animationData:animationData}}"/> 
+    <!--主体内容-->
+    <view class="commonInfo" bindtap='jumpToUserCenter'>
+      <view class="left">
+        <image class="content uc-headImg" src="{{headImg}}" alt="altHeadImg"></image>
+        <text class="title">{{userName}}</text>
+      </view>
+      <!-- <image class="content arrow" alt="{{altArrowImg}}" src="{{iconImg}}" alt="altIcon"></image> -->
+      <i class="content arrow iconfont icon-tiaozhuanjiantou" bindtap='bindTapUserInfo'></i>
+    </view>
+    <view class="myEntity" wx:if="{{!entityDisabled}}" bindtap='jumpMyEntity'>
+      <view class="left">
+        <i class="iconfont icon-qiehuan" bindtap='jumpMyEntity'></i>
+        <text class="title">{{isTroupe ? '我的剧团' : '我的剧院'}}</text>
+      </view>
+      <i class="content arrow iconfont icon-tiaozhuanjiantou" bindtap='jumpMyEntity'></i>
+    </view>
+    <view class="change" wx:if="{{!entityDisabled}}" data-id='qiehuan' bindtap='jumpEntityList'>
+      <view class="left">
+        <i class="iconfont icon-qiehuan"></i>
+        <text class="title">切换</text>
+      </view>
+      <i class="content arrow iconfont icon-tiaozhuanjiantou" bindtap='jumpEntityList'></i>
+    </view>
+    <view class="operaOrder" wx:if="{{!entityDisabled}}" bindtap='jumpOperaOrder'>
+      <view class="left">
+        <i class="iconfont icon-qiehuan"></i>
+        <text class="title">{{isTroupe ? '预约剧目单' : '预约场厅单'}}</text>
+      </view>
+      <i class="content arrow iconfont icon-tiaozhuanjiantou" bindtap='jumpOperaOrder'></i>
+    </view>
+    <view class="operaOrderBy" wx:if="{{!entityDisabled}}" bindtap='jumpOperaOrderBy'>
+      <view class="left">
+        <i class="iconfont icon-qiehuan"></i>
+        <text class="title">{{isTroupe ? '场厅受约单' : '剧目受约单'}}</text>
+      </view>
+      <i class="content arrow iconfont icon-tiaozhuanjiantou" bindtap='jumpOperaOrderBy'></i>
+    </view>
+    <!--暂无权限-->
+    <view class="no-list" wx:if="{{entityDisabled}}">
+        <view class="no-data-img">
+          <image src="{{defaultImg.emptyDefault}}"></image>
+          <view>{{isTroupe ? '您暂无该剧团权限' : '您暂无该剧院权限'}}</view>
+        </view>
+        <button wx:if="{{!isTroupe}}" class="add-entity-btn" hover-class="hover-add-entity-btn" type="warn" data-url="/pages/joinEntity/joinEntity?e=juyuan" bindtap="doViewTap">切换其他剧院</button>
+        <button wx:else class="add-entity-btn" hover-class="hover-add-entity-btn" type="warn" data-url="/pages/joinEntity/joinEntity?e=jutuan" bindtap="doViewTap">切换其他剧团</button>
+      </view>
+    <!-- 底部导航 -->
+    <df-bottom-nav navActive="4" isTroupe="{{isTroupe}}"></df-bottom-nav>
+  </view>

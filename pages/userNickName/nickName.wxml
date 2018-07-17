@@ -1,0 +1,16 @@
+<import src="../../component/TopMsgTip/TopMsgTip.wxml"/>
+<import src="../../component/MessageToast/MessageToast.wxml"/>
+<import src="../../component/DafengInput/DafengInput.wxml"/>
+<view class="container">
+    <!-- <view class="weui-cells__title">可以自动聚焦的input</view> -->
+    <template is="TopMsgTip" wx:if="{{errorMsg}}" data="{{message:errorMsg,animationData:animationData}}"/> 
+    <!-- <template is="MessageToast" wx:if="{{toastMsg}}" data="{{message:toastMsg,iconType:1}}"/>  -->
+    <view class="form userName">
+      <view class="weui-cell wrap">
+        <df-input class="user-input" auto-focus bindinput="verifyUserName" maxlength="50" placeholder="{{placeholder}}" value="{{inputVal}}"></df-input>
+      </view>
+    </view>
+    <view class="confirm">
+      <button type="default" class="{{isVerify ? 'active':'default'}}" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" bindtap="btnSubmit" disabled='{{!isVerify}}' hover-class="longTap"> {{buttonText}} </button>
+    </view>
+  </view>

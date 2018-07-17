@@ -1,0 +1,21 @@
+<!--component/PreviewImage/PreviewImage.wxml-->
+<!-- style="width:{{width}}px;height:{{height}}px" -->
+<!-- 关闭事件可能需要阻止冒泡事件 -->
+<view wx:if="{{isOpen}}" id="{{id}}" class="photo-box" catchtouchmove='disabledPullDown' catchtap="closePhotoBox">
+  <view>
+    <view class="number">{{current}}/{{photos.length}}</view>
+    <swiper catchtap="closePhotoBox" class="photo-slider" indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{indicatorActiveColor}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="bindchange">
+      <swiper-item wx:for="{{photos}}" wx:key="{{item.id}}">
+      <view class="photo-title">
+        {{item.title}}
+      </view>
+      <view class="photo-show">
+        <image src="{{item.src}}" class="slide-image" mode="aspectFill" catchtap="noMaopao"></image>
+      </view>
+      <view class="photo-info">
+        {{item.info}}
+      </view>
+      </swiper-item>
+    </swiper>
+  </view>
+</view>

@@ -1,0 +1,34 @@
+<view class="nav-block">
+  <view class="{{navActive =='1' ? 'nav-item active' : 'nav-item'}}" data-url="{{urls[0]}}" catchtap="doNavViewTap">
+    <view class="nav-icon opera-icon">
+      <text class="iconfont {{icons[0]}}"></text>
+      <!-- <image src="../../images/opera-icon-active.png" wx:if="{{navActive == '1'}}"></image>
+      <image src="../../images/opera-icon.png" wx:else></image> -->
+    </view>
+    <view class="nav-name">{{titles[0]}}</view>
+  </view>
+  <view class="{{navActive =='2' ? 'nav-item active' : 'nav-item'}}" data-url="{{urls[1]}}" catchtap="doNavViewTap">
+    <view class="nav-icon schedule-icon">
+      <text class="iconfont {{icons[1]}}"></text>
+      <!-- <image src="../../images/schedule-icon-active.png" wx:if="{{navActive == '2'}}"></image>
+      <image src="../../images/schedule-icon.png" wx:else></image> -->
+    </view>
+    <view class="nav-name">{{titles[1]}}</view>
+  </view>
+  <view class="{{navActive =='3' ? 'nav-item active' : 'nav-item'}}" data-url="{{urls[2]}}" catchtap="doNavViewTap">
+    <view class="nav-icon deal-icon">
+      <text class="iconfont {{icons[2]}}"></text>
+      <!-- <image src="../../images/deal-icon-active.png" wx:if="{{navActive == '3'}}"></image>
+      <image src="../../images/deal-icon.png" wx:else></image> -->
+    </view>
+    <view class="nav-name">{{titles[2]}}</view>
+  </view>
+  <view class="{{navActive =='4' ? 'nav-item active' : 'nav-item'}}" data-url="{{urls[3]}}" catchtap="doNavViewTap">
+    <view class="nav-icon my-icon">
+      <text class="iconfont {{icons[3]}}"></text>
+      <!-- <image src="../../images/my-icon-active.png" wx:if="{{navActive == '4'}}"></image>
+      <image src="../../images/my-icon.png" wx:else></image> -->
+    </view>
+    <view class="nav-name">{{titles[3]}}</view>
+  </view>
+</view>

@@ -1,0 +1,8 @@
+<!--pages/scheduleBoard/scheduleBoard.wxml-->
+<view>
+  <df-bottom-nav navActive="2"></df-bottom-nav>
+  <df-swipercalendar bindnextMonth='nextMonth' bindprevMonth='prevMonth' binddateChange='dateChange' binddayClick='dayClick' scheduleData="{{fomatScheduleData}}" calendarOptions="{{calendarOptions}}"></df-swipercalendar>
+
+  <button bindtap='doViewTap' data-url="/pages/venueReservationList/venueReservationList">场厅受约单列表</button>
+  <button bindtap='doViewTap' data-url="/pages/venueOrderList/venueOrderList">场厅预约单列表</button>
+</view>

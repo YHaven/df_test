@@ -1,0 +1,25 @@
+<!-- <import src="../../component/TopMsgTip/TopMsgTip.wxml"/> -->
+<import src="../../component/MessageToast/MessageToast.wxml"/>
+<import src="../../component/DafengInput/DafengInput.wxml"/>
+<!-- <import src="../../component/Nav/Nav.wxml"/> -->
+<view class="container">
+    <!-- <view class="weui-cells__title">可以自动聚焦的input</view> -->
+    <top-msg-tips message="{{errorMsg}}" id="topMsgTips"></top-msg-tips>
+    <!-- <template is="MessageToast" wx:if="{{toastMsg}}" data="{{message:toastMsg,iconType:1}}"/>  -->
+    <view class="form userName">
+      <view class="weui-cell wrap">
+        <df-input class="user-input" bindblur="verifyUserName" maxlength="50" placeholder="{{placeholder}}" value="{{inputVal}}"></df-input>  
+      </view>
+      <view class="tipsWrap wrapNoBorder">
+        <text class="tip warning">{{tips1}}</text>
+        <text class="tip">{{tips2}}</text>
+        <text class="tip">{{tips3}}</text>
+        <text class="tip">{{tips4}}</text>
+      </view>
+    </view>
+    <view class="confirm">
+      <button type="default" class="{{isVerify ? 'active' : 'default'}}" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}"
+        disabled="{{!isVerify}}" bindtap="btnSubmit" hover-class="longTap"> {{buttonText}} </button>
+    </view>
+    <!-- <template is="Nav" data="{{navActive:1}}"/> -->
+  </view>

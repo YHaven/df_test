@@ -1,0 +1,33 @@
+<!--pages/bindPhone/bindPhone.wxml-->
+<import src="../../component/TimeoutBoard/TimeoutBoard.wxml"/>
+<import src="../../component/MessageToast/MessageToast.wxml"/>
+<!-- 请求超时模板 默认false-->
+<template is="TimeoutBoard" wx:if="{{netTimeOut}}"/>
+<view class="container" wx:else>
+  <!-- 表单错误提示模板 默认false-->
+   <top-msg-tips message="{{errorMsg}}" id="topMsgTips"></top-msg-tips>
+   <template is="MessageToast" wx:if="{{toastMsg}}" data="{{message:toastMsg,iconType:1}}"/> 
+  <view class="bind-phone common-form">
+    <form>
+      <view class="form-section">
+        <!-- <view class="section-title">input</view> -->
+        <input class="section-value" name="input" maxlength="11" value="{{formData.phone}}" type="number" bindinput="bindPhoneInput" placeholder-style='color:#bfbfbf' placeholder="请输入手机号" />
+      </view>
+      <view class="form-section code">
+        <!-- <view class="section-title">input</view> -->
+        <input class="section-value" name="input" maxlength="6" value="{{formData.code}}" type="number" bindinput="bindCodeInput" placeholder-style='color:#bfbfbf' placeholder="请输入验证码" />
+        <view class="code-btn {{codeDisabled?'':'pass'}}" bindtap="sendMsg">{{codeText}}</view>
+      </view>
+    </form>
+  </view> 
+  <button class="bind-phone-login-btn" type="primary" loading="{{showLoading}}" bindtap="submitForm">登录</button>
+  <button class="bind-phone-get-btn" bindtap="getPhoneNumber2" wx:if="{{wxPhone !== ''}}">
+      <view class="icon-text"><image src="../../images/icon_weixin_green.png"></image></view>
+      使用微信绑定的手机号
+  </button>
+  <button class="bind-phone-get-btn" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" wx:else>
+      <view class="icon-text"><image src="../../images/icon_weixin_green.png"></image></view>
+      使用微信绑定的手机号
+  </button>
+</view>
+

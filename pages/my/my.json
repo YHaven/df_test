@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "df-bottom-nav": "../../component/BottomNav/BottomNav"
+  }
+}

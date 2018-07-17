@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "df-datetime": "../DFDateTimePicker/DFDateTimePicker"
+  }
+}

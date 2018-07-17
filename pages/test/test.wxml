@@ -1,0 +1,21 @@
+<!--pages/test/test.wxml-->
+<!-- <import src="../../component/SearchBox/SearchBox.wxml" />
+<template is="SearchBox" /> -->
+<df-top-search bindsearch="bindsearch"></df-top-search>
+<df-input bindchange="change" value='1111'/>
+<df-datetimepicker mode="selector" range="{{range}}">自定义普通选择</df-datetimepicker>
+<df-datetimepicker mode="multiSelector" range="{{range}}">自定义多列选择</df-datetimepicker>
+<df-datetimepicker mode="region">选择省市</df-datetimepicker>
+<df-datetimepicker mode="date" value="2018-01-01" start="1970-01-01" end="2100-01-01">选择日期</df-datetimepicker>
+<df-datetimepicker mode="time" value="12:00" start="00:00" end="23:59">选择时间</df-datetimepicker>
+<!-- <画廊> -->
+<button bindtap='openPhotoBox'>打开图集</button>
+<df-preview-image id="{{photoBoxId}}"></df-preview-image>
+<view>
+<df-datetime>11111111</df-datetime>
+<df-topmsgtips id="topMsgTips"></df-topmsgtips>
+<button bindtap="testToast">测试Toast</button>
+<rich-text nodes="{{nodes}}"></rich-text>
+</view>
+
+

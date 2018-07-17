@@ -1,0 +1,28 @@
+@import './myMatters_about.wxss';
+@import './myMatters_workflow.wxss';
+@import './myMatters_order.wxss';
+
+/*tab*/
+.swiper-tab{
+    width: 100%;
+    border-bottom: 2rpx solid #ccc;
+    text-align: center;
+    height: 88rpx;
+    line-height: 88rpx;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+}
+.swiper-tab-item{
+    width: 30%; 
+    color:#434343;
+}
+.active{
+    color:#F65959;
+    border-bottom: 4rpx solid #F65959;
+}
+swiper{
+  text-align: center;
+}
+.wrap  .wrapTitle{color: #353535;font-size: 30rpx;}
+.wrap  .wrapTitle .tip-num{position: absolute;right: -30rpx;top: -10rpx;background: #ffbe00;color: #ffffff;display: inline-block;width: 36rpx;height: 20rpx;text-align: center;line-height: 20rpx;font-size: 20rpx;border-radius: 5rpx;}

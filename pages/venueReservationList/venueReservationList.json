@@ -1,0 +1,16 @@
+{
+  "navigationBarTitleText": "受约单",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "df-input": "../../component/DafengInput/DafengInput",
+    "df-top-search": "../../component/TopSearch/TopSearch",
+    "df-datetimepicker": "../../component/DateTimePicker/DateTimePicker",
+    "df-bottom-nav": "../../component/BottomNav/BottomNav",
+    "df-submit-inner-flow": "../../component/SubmitInnerFlow/SubmitInnerFlow",
+    "df-submit-agree-order": "../../component/SubmitAgreeOrder/SubmitAgreeOrder",
+    "df-check-phone-code": "../../component/CheckPhoneCode/CheckPhoneCode",
+    "df-check-phone-code-only": "../../component/CheckPhoneCodeOnly/CheckPhoneCodeOnly",
+    "df-preview-image": "../../component/PreviewImage/PreviewImage",
+    "top-msg-tips": "../../component/TopMsgTips/TopMsgTips"
+  }
+}

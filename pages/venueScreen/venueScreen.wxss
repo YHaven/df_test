@@ -1,0 +1,8 @@
+/* pages/venueScreen/venueScreen.wxss */
+@import '../operaScreen/operaScreen.wxss';
+.font_24 {
+  font-size: 24rpx;
+}
+.time .extra .inputWrap .inputTip {
+  width: 55rpx;
+}

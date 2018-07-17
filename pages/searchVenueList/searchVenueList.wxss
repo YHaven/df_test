@@ -1,0 +1,2 @@
+/* pages/searchVenueList/searchVenueList.wxss */
+@import '../searchOperaList/searchOperaList.wxss';

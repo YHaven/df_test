@@ -1,0 +1,21 @@
+<!--index.wxml-->
+<import src="../../component/TimeoutBoard/TimeoutBoard.wxml"/>
+<template is="TimeoutBoard" wx:if="{{netTimeOut}}"/>
+<!-- <view wx:elif="{{hasUserInfo}}">
+  <template is="TimeoutBoard" wx:if="{{netTimeOut}}"/>
+  <view class="container login-container" wx:else>
+    <view class="userinfo">
+      <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <block wx:else>
+        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+        <button catchtap="doViewTap" data-url="/pages/login/login">跳转到登录</button>
+        <button catchtap="closeWin">关闭</button>
+        <button catchtap="doViewTap" data-url="/pages/entityList/entityList">跳转到组织</button>
+        <button catchtap="doViewTap" data-url="/pages/bindPhone/bindPhone">跳转到手机绑定</button>
+      </block>
+    </view>
+  </view>
+</view> -->
+<view wx:else></view>
+

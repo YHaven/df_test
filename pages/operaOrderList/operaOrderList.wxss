@@ -1,0 +1,35 @@
+/* pages/operaOrderList/operaOrderList.wxss */
+.fast-nav{display: flex;text-align: center;border-bottom: 1px solid #dadada;background: #ffffff;}
+.fast-nav-item{flex: 1;padding: 32rpx 0rpx;color: #353535;font-size: 30rpx;}
+.fast-nav-item.active{color: #f94551;}
+.fast-nav-item .title{position: relative;display: inline-block;}
+.fast-nav-item .tip-num{position: absolute;right: -30rpx;top: -10rpx;background: #ffbe00;color: #ffffff;display: inline-block;width: 36rpx;height: 20rpx;text-align: center;line-height: 20rpx;font-size: 20rpx;border-radius: 5rpx;}
+
+
+.opera-order-list .data-tip{padding-bottom: 100rpx;}
+
+.opera-order-list .data-item{border-bottom: 1px solid #e5e5e5;}
+.data-item .entity-info{height: 64rpx;line-height: 64rpx;font-size: 24rpx;border-bottom: 1px solid #e5e5e5;margin-left: 20rpx;padding-right: 20rpx;}
+.data-item .entity-info .name{float: left;width: 540rpx;overflow: hidden;text-overflow: ellipsis;white-space:nowrap;}
+.data-item .entity-info .status{float: right;color: #f94551;}
+.data-item .item-content{padding: 20rpx 20rpx 25rpx 0rpx;margin-left: 20rpx;}
+.data-item .item-image{width: 120rpx;height: 178rpx;background: #dfdfdf;float: left;}
+.data-item .item-image image{width: 100%;height: 100%;}
+.data-item .item-info{margin-left: 140rpx;font-size: 26rpx;}
+.data-item .item-title{/*height: 90rpx;*/color: #000000;font-size: 34rpx;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;word-break: break-all;}
+.data-item .item-v1{margin-top: 18rpx;height: 38rpx;color: #a9a9a9;width: 100%;}
+.data-item .item-v1 text{display: inline-block;float: left;}
+.item-v1 .times{margin-right: 30rpx;width: 114rpx;overflow: hidden;text-overflow: ellipsis;white-space:nowrap;}
+.item-v1 .types{margin-right: 5rpx;width: 420rpx;overflow: hidden;text-overflow: ellipsis;white-space:nowrap;}
+.item-v1 .entity{margin-left: 5rpx;width: 220rpx;overflow: hidden;text-overflow: ellipsis;white-space:nowrap;}
+.item-v2 .label{word-spacing: 18rpx;width: 108rpx;display: inline-block;}
+.item-v2 .show-price{display: inline-block;margin-right: 10rpx;}
+.item-v2 .price{color: #f94551;}
+.item-v2 .eposit-price{display: inline-block;margin-right: 10rpx;color: #ff7200}
+.data-item .iyanyi-opration{height: 95rpx;border-top: 1px solid #e5e5e5;margin-left: 20rpx;}
+.data-item .iyanyi-opration .pay_ide{float: left;font-size: 24rpx;margin-top: 24rpx;margin-right: 28rpx;}
+.data-item .pay_ide .pay_ide_icon{width: 41rpx;height: 35rpx;float: right;margin-left: 10rpx;}
+.data-item .pay_ide .pay_ide_icon image{width: 100%;height: 100%;}
+
+.iyanyi-opration button{margin-top: 18rpx;width: 120rpx;height: 60rpx;line-height: 60rpx;font-size: 28rpx;}
+.no-list,.data-list{margin-top: 220rpx;}

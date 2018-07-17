@@ -1,0 +1,30 @@
+/* pages/joinEntity/joinEntity.wxss */
+.join-entity .data-list{padding: 25rpx 20rpx;margin: 0rpx -12.5rpx;}
+.join-entity .data-item{width: 340rpx;float: left;margin: 0rpx 15rpx;position: relative;overflow: hidden;margin-bottom: 27rpx;background: #ffffff;}
+.join-entity .data-item .data-image{width: 340rpx;height: 212rpx;}
+.join-entity .data-item .data-image image{width: 100%;height: 100%;}
+.data-image.is-renzheng::after{content: '认证';display: block;position: absolute;top: 3px;right: 1px;z-index: 4;text-align: center;transform: rotate(45deg);color: #fff;}
+.data-image.is-renzheng::before{content: '';display: block;position: absolute;top: -48rpx;right: -48rpx;z-index: 4;width: 96rpx;height: 96rpx;transform: rotate(45deg);background-color: #f94551;}
+.data-image.is-renzheng{font-size: 20rpx;text-align: center;}
+.data-item .data-info{text-align: left;padding:12rpx;height:107rpx;}
+.data-item .data-info .entity-name{font-size: 30rpx;overflow: hidden;text-overflow:ellipsis;white-space:nowrap;}
+.data-item .data-info .entity-company{color:#9b9ea0; font-size: 20rpx;overflow: hidden;text-overflow:ellipsis;white-space:nowrap;}
+.data-item .data-info .entity-op{float: right;}
+.entity-op .apply-btn{border:1px solid #ffba00;color: #ffba00;font-size: 18rpx;border-radius: 10rpx;padding:5rpx 12rpx;display: block;vertical-align: top;}
+.entity-op .applying-btn{border:1px solid #ffba00;color: #fff;font-size: 18rpx;border-radius: 10rpx;padding:5rpx 12rpx;background: #ffba00;margin-top:0rpx;display: block;vertical-align: top;}
+
+/*模态框样式调整*/
+.join-entity .iyanyi-dialog .dialog-inner-body{width: 400rpx;margin: 0 auto;margin-bottom: 45rpx;text-align: left;}
+.join-entity .iyanyi-dialog .title{display: block;width: 360rpx;margin: 0 auto;overflow: hidden;text-overflow:ellipsis;white-space:nowrap;font-size:30rpx;color:#000;}
+.join-entity .dialog-inner-body .section{display:block;width:100%;height:36rpx;}
+.join-entity .dialog-inner-body .section-title{float: left;color: #aaaaaa;width: 95rpx;font-size:30rpx;height:36rpx;padding-top: 15rpx;}
+.join-entity .dialog-inner-body .inputWrap{float:left;display: block;width:305rpx;}
+.join-entity .dialog-inner-body .section-value{display: block;padding-right:0;}
+.join-entity .dialog-inner-body .section-value{float:left;border-bottom: 1px solid #d2d3d5;}
+
+.join-entity .dialog-footer{font-size:36rpx;}
+.join-entity .dialog-footer .cancel{color:#aaa;}
+
+
+
+

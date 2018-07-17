@@ -1,0 +1,3 @@
+<import src="../../component/TimeoutBoard/TimeoutBoard.wxml"/>
+<!-- 请求超时模板 默认false-->
+<template is="TimeoutBoard" wx:if="{{netTimeOut}}"/>  

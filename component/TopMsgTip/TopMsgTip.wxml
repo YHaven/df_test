@@ -1,0 +1,3 @@
+<template name="TopMsgTip">
+  <view class='warn-tip' animation="{{animationData}}"><view class="icon-text"><icon type="warn" color="rgb(255,255,255)" size="15"></icon></view><text>{{message}}</text></view>
+</template>

@@ -1,0 +1,10 @@
+/* component/BottomNav.wxss */
+/* 底部导航 */
+@import "../../style/icon.wxss";
+.nav-block{display: flex;text-align: center;position: fixed;bottom: 0px;width: 100%;background-color: #fff;border-top: 1px solid #f4f4f4;z-index: 10;}
+.nav-item{flex: 1;padding-bottom: 2rpx; color: #999;font-size: 20rpx;}
+.nav-item.active{color: #f94551;}
+.nav-icon{display: inline-block;width: 62rpx;height: 55rpx;}
+.nav-icon .iconfont{font-size: 64rpx;}
+/* .nav-icon .icon-dangqi{font-size: 56rpx;} */
+.nav-icon image{width: 100%;height: 100%;}

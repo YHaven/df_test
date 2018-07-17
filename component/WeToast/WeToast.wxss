@@ -1,0 +1,4 @@
+.iyanyi-toast{position: fixed;top: -70rpx;width: 100%;z-index: 9;}
+.warn-tip{background: #e64340;min-height: 70rpx;line-height: 70rpx;text-align: center;color: #ffffff;font-size: 30rpx;width: 100%;z-index: 19;opacity: 0;}
+.warn-tip .icon-text{display: inline-block;height:32rpx;width: 32rpx;margin-right: 16rpx;}
+.warn-tip icon{float: left;margin-top: 3rpx;}

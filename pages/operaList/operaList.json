@@ -1,0 +1,9 @@
+{
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "df-input": "../../component/DafengInput/DafengInput",
+    "df-top-search": "../../component/TopSearch/TopSearch",
+    "df-datetimepicker": "../../component/DateTimePicker/DateTimePicker",
+    "df-bottom-nav": "../../component/BottomNav/BottomNav"
+  }
+}

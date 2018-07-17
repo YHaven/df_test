@@ -1,0 +1,144 @@
+<import src="../../component/TopMsgTip/TopMsgTip.wxml"/>
+<import src="../../component/MessageToast/MessageToast.wxml"/>
+<view class="container operaTypeContainer">
+  <view class="list operaType">
+    <view class="title" bindtap='openOrFold' data-isOpen='{{operaIcon === "selected icon-xiala"}}' data-type="opera">
+      <text class="type">{{text1}}</text>
+      <text class="iconfont arrow {{operaIcon}}"></text>
+    </view>
+    <view class="content">
+      <checkbox-group bindchange="checkboxChangeOperaType">
+        <label class="checkbox" wx:for="{{operaitems}}" wx:key="{{item}}">
+          <view hidden='{{!operaitemsOpen&&index>=4}}' class="checkboxWrap {{item.selected ? 'itemChecked' : 'itemNoCheck'}}">
+            <checkbox value="{{item.value}}" checked="{{item.selected}}"/>{{item.name}}
+          </view>
+        </label>
+        <view class="clearfix"></view>
+      </checkbox-group>
+    </view>
+  </view>
+  <view class="list schedule">
+    <view class="title">
+      <text class="type">{{text2}}</text>
+    </view>
+    <view class="content">
+      <picker mode="date" value="{{formObj.scheduleDate['from']}}" start="1970-01-01" end="2100-01-01" bindchange="bindDateChange" data-type='from'>
+        <view class="picker" style="{{formObj.scheduleDate['from']?'':'color: #ddd'}}">
+          <!-- <image class="calendar" src="{{calendar}}" alt="altCalendar"></image> -->
+          <view><text class="iconfont icon-rili1 calendar"></text>
+          {{formObj.scheduleDate['from']||'开始日期'}}</view>
+          <view><text wx:if="{{formObj.scheduleDate['from']}}" catchtap='clearDate' data-type='from' class="iconfont icon-guanbi calendar-clear"></text></view>
+        </view>
+      </picker>
+      <view class="deliver">-</view>
+      <picker mode="date" value="{{formObj.scheduleDate['to']}}" start="1970-01-01" end="2100-01-01" bindchange="bindDateChange" data-type='to'>
+        <view class="picker" style="{{formObj.scheduleDate['to']?'':'color: #ddd'}}">
+          <!-- <image class="calendar" src="{{calendar}}" alt="altCalendar"></image> -->
+          <view><text class="iconfont icon-rili1 calendar"></text>
+          {{formObj.scheduleDate['to']||'截止日期'}}</view>
+          <view><text wx:if="{{formObj.scheduleDate['to']}}" catchtap='clearDate' data-type='to' class="iconfont icon-guanbi calendar-clear"></text></view>
+        </view>
+      </picker>
+      <view class="clearfix"></view>
+    </view>
+  </view>
+  <view class="list price">
+    <view class="title" bindtap='openOrFold' data-isOpen='{{priceIcon === "selected icon-xiala"}}' data-type="price">
+      <text class="type">{{text3}}</text>
+      <text class="iconfont arrow {{priceIcon}}"></text>
+    </view>
+    <view class="content">
+      <checkbox-group bindchange="checkboxChangePrice">
+        <label class="checkbox" wx:for="{{priceitems}}" wx:key="{{item}}">
+          <view hidden='{{!priceitemsOpen&&index>=4}}'  class="checkboxWrap {{item.selected ? 'itemChecked' : 'itemNoCheck'}} {{index===priceitems.length-1?'font_24':''}}">
+            <checkbox value="{{item.value}}" checked="{{item.selected}}"/>{{item.name}}
+          </view>
+        </label>
+        <view class="clearfix"></view>
+      </checkbox-group>
+      <view class="extra" wx:if="{{priceitemsOpen}}">
+        <view class="inputWrap">
+          <view class="inputWrapInner">
+            <df-input type="digit" value="{{formObj.priceInput['from']}}" class="user-input" bindinput='extraPriceStartInput' bindblur="verifyExtraPrice1" maxlength="11" placeholder="输入价格" placeholder-class="placeholder-class"/>
+            <text class="inputTip">{{extraPrice1}}</text>
+          </view>
+        </view>
+        <view class="deliver">-</view>
+        <view class="inputWrap">
+          <view class="inputWrapInner">
+            <df-input type="digit" value="{{formObj.priceInput['to']}}" class="user-input" bindinput='extraPriceEndInput' bindblur="verifyExtraPrice2" maxlength="11" placeholder="输入价格" placeholder-class="placeholder-class"/>
+            <text class="inputTip">{{extraPrice1}}</text>
+          </view>
+        </view>
+        <view class="clearfix"></view>
+      </view>
+    </view>
+  </view>
+  <view class="list authentication">
+    <view class="title">
+      <text class="type">{{text4}}</text>
+    </view>
+    <view class="content">
+      <checkbox-group bindchange="radioChange">
+        <label class="checkbox" wx:for="{{authitems}}" wx:key="{{item}}">
+          <view class="checkboxWrap {{item.selected ? 'itemChecked' : 'itemNoCheck'}}">
+            <checkbox value="{{item.value}}" checked="{{item.selected}}"/>{{item.name}}
+          </view>
+        </label>
+        <!-- <label class="radio" wx:for="{{authitems}}">
+          <radio value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+        </label> -->
+        <view class="clearfix"></view>
+      </checkbox-group>
+    </view>
+  </view>
+  <view class="list city">
+    <view class="title" catchtap='openOrFold' data-url="{{filterCityUrl}}" data-isOpen='{{cityIcon === "selected icon-xiala"}}' data-type="city">
+      <text class="type">{{text5}}</text>
+      <text wx:if="{{!formObj.city || formObj.city.length === 0}}" class="iconfont arrow {{cityIcon}}"></text>
+    </view>
+    <view class="city_view" catchtap='doViewTap' data-url="{{filterCityUrl}}">
+      <view class="content" wx:if="{{formObj.city && formObj.city.length > 0}}">
+        <text class="cityName" wx:for="{{formObj.city}}" wx:key="{{item}}">{{item.CityCnName + (index!=formObj.city.length-1?',':'')}}</text>
+      </view>
+      <text wx:if="{{formObj.city && formObj.city.length > 0}}" class="iconfont chooseCity {{cityIcon}}"></text>
+    </view>
+  </view>
+  <view class="list time">
+    <view class="title" bindtap='openOrFold' data-isOpen='{{seatIcon === "selected icon-xiala"}}' data-type="seat">
+      <text class="type">{{text6}}</text>
+      <text class="iconfont arrow {{seatIcon}}"></text>
+    </view>
+    <view class="content">
+      <checkbox-group bindchange="checkboxChangeSeatNum">
+        <label class="checkbox" wx:for="{{seatitems}}" wx:key="{{item}}">
+          <view hidden='{{!seatitemsOpen&&index>=3}}' class="checkboxWrap {{item.selected ? 'itemChecked' : 'itemNoCheck'}}">
+            <checkbox value="{{item.value}}" checked="{{item.selected}}"/>{{item.name}}
+          </view>
+        </label>
+        <view class="clearfix"></view>
+      </checkbox-group>
+      
+      <view class="extra" wx:if="{{seatitemsOpen}}">
+        <view class="inputWrap">
+          <view class="inputWrapInner">
+            <df-input type="number" class="user-input" value="{{formObj.seatInput.from}}" bindinput='extraTimeStartInput' bindblur="verifyExtraTime1" maxlength="10" placeholder="输入座位数"></df-input> 
+            <text class="inputTip">{{extraTime1}}</text>
+          </view>
+        </view>
+        <view class="deliver">-</view>
+        <view class="inputWrap">
+          <view class="inputWrapInner">
+            <df-input type="number" class="user-input" value="{{formObj.seatInput.to}}" bindinput='extraTimeEndInput' bindblur="verifyExtraTime2" maxlength="10" placeholder="输入座位数"/>
+            <text class="inputTip">{{extraTime1}}</text>
+          </view>
+        </view>
+        <view class="clearfix"></view>
+      </view>
+    </view>
+  </view>
+  <view class="list buttonGroup">
+    <button type="default" class="reset" size="{{primarySize}}" loading="{{loading}}" plain  bindtap="reset"> {{resetText}} </button>
+    <button type="default" class="confirm" size="{{primarySize}}" loading="{{loading}}" plain  bindtap="confirm"> {{confirmText}} </button>
+  </view>
+</view>

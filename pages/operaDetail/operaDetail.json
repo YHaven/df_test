@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "剧目详情",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "df-input": "../../component/DafengInput/DafengInput",
+    "df-top-search": "../../component/TopSearch/TopSearch",
+    "df-datetimepicker": "../../component/DateTimePicker/DateTimePicker",
+    "df-alldatetimepicker": "../../component/DFDateTimePicker/DFDateTimePicker",
+    "df-preview-image": "../../component/PreviewImage/PreviewImage",
+    "df-calendar": "../../component/Calendar/Calendar",
+    "top-msg-tips": "../../component/TopMsgTips/TopMsgTips"
+  }
+}

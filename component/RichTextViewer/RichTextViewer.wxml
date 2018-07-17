@@ -1,0 +1,11 @@
+<!--component/richTextViewer/richTextViewer.wxml-->
+ <import src="../wxParse/wxParse.wxml"/>  
+<view class="content-block block">
+  <view class="item" bindtap='showRichText'>
+    <text class="title">{{title}}</text>
+    <view class='iconView'>
+      <text class="iconfont arrow icon-xiala {{isExpand?'up':''}} "></text>
+    </view>
+  </view>
+    <view wx:if="{{isExpand}}" class="item-v wxParser"><template is="wxParse" data="{{wxParseData:formatInfo.nodes}}"/></view> 
+</view>

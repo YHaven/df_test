@@ -1,0 +1,44 @@
+<import src="../../component/TopMsgTip/TopMsgTip.wxml"/>
+<import src="../../component/MessageToast/MessageToast.wxml"/>
+<view class="container">
+    <template is="TopMsgTip" wx:if="{{errorMsg}}" data="{{message:errorMsg,animationData:animationData}}"/> 
+    <!--待提交-->
+    <view class="wrap" wx:if="{{waitForSubmit.length !== 0}}">
+      <view class="submitWrap">
+        <view class="wrapTitle">待提交
+          <text class="tip-num" wx:if="{{waitForSubmit.length>0}}">{{waitForSubmit.length}}</text>
+        </view>
+        <view class="itemWrap">
+          <view class="itemTitle" bindtap="jumpToOrderDetail">20171120-世界经典原版音乐剧《猫》Cats +百老汇浪漫音乐剧《I Do！I Do！》中文版+外百老汇浪漫爱情-杭州大剧院【歌剧院】</view>
+          <view class="itemContent">
+            <text class="">2017-12-09  11:09:12</text>
+            <view class="buttomWrap">
+              <button class="" loading="{{loading}}" bindtap="btnSubmit" hover-class="longTap">付款</button>
+              <button class="" loading="{{loading}}" bindtap="cancelOrder" hover-class="longTap">取消</button>
+            </view>
+          </view>
+        </view>
+        <view class="data-tip">
+          <view class="loading-data" wx:if="{{hasMore}}">上拉加载</view>
+          <view class="no-more" wx:else>
+            <view class="img-line"><image src="../../images/icon_cry.png"></image></view>
+            <view>没有更多了</view> 
+          </view>
+        </view>
+      </view>
+    </view>
+    <!--暂无提交预约剧目单-->
+    <view class="wrap" wx:else>
+      <view class="noOrders">
+        <image src=""></image>
+      </view>
+    </view>
+    <!--内部审核模态(公用,7-2-0,7-2-1-->
+    <!-- <view class="examineModal" wx:if="{{ifHasManToExamine}}">
+      <view class="examineMan">
+
+      </view>
+    </view> -->
+    <!-- 底部导航 -->
+    <df-bottom-nav navActive="4"></df-bottom-nav>
+</view>

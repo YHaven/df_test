@@ -1,0 +1,8 @@
+<!--component/SwiperCalendar/SwiperCalendar.wxml-->
+<swiper class="swiper-calendar" current="{{currentIndex}}" id="swiper" bindanimationfinish="bindanimationfinish" bindchange="bindchange" >
+  <swiper-item wx:for="{{calendarShow}}" wx:index="sIndex" wx:key="sIndex" item-id="{{item.month+1}}">
+    <df-calendar year="{{item.year}}" month="{{item.month+1}}" day="{{item.day}}" header="{{item.header}}" next="{{item.next}}" prev="{{item.prev}}" weeks="{{item.week_title}}" weeks-type="{{item.title_type}}"
+        show-more-days="{{item.more}}" lunar="{{item.lunar}}" cell-size="{{item.cs}}" days-color="{{item.style}}" active-type="{{item.activeType}}" next-month='hi' bindnextMonth='nextMonth' bindprevMonth='prevMonth'
+        binddateChange='dateChange' binddayClick='dayClick' myScheduleData="{{item.fomatScheduleData}}"></df-calendar>
+  </swiper-item>
+</swiper>

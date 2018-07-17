@@ -1,0 +1,127 @@
+<!--index.wxml-->
+<import src="../../component/TimeoutBoard/TimeoutBoard.wxml" />
+<!-- 请求超时模板 默认false-->
+<template is="TimeoutBoard" wx:if="{{netTimeOut}}" />
+
+<view class="container troupe-detail">
+  <!-- <template is="TopMsgTip" wx:if="{{errorMsg}}" data="{{message:errorMsg,animationData:animationData}}" /> -->
+  <top-msg-tips message="{{errorMsg}}" id="topMsgTips"></top-msg-tips>
+  <!-- 顶部轮播 start -->
+  <swiper wx:if="{{swiperArr && swiperArr.length > 0}}" class="top-swiper" indicator-dots="{{swiperArr.length === 1?false:swiperOptions.indicatorDots}}" indicator-color="{{swiperOptions.indicatorColor}}" indicator-active-color="{{swiperOptions.indicatorActiveColor}}" autoplay="{{swiperOptions.autoplay}}" interval="{{swiperOptions.interval}}"
+    duration="{{swiperOptions.duration}}">
+    <block wx:for="{{swiperArr}}" wx:key="{{item.id}}">
+      <swiper-item wx:if="{{item.id == 'video'}}" class="video">
+        <view wx:if= "{{!item.isplay && item.previewSrc || item.ispasuse}}" class="mask-video" bindtap="playGVideo"><text class="iconfont icon-kaishi"></text></view>
+        <image wx:if= "{{!item.isplay && item.previewSrc}}" src="{{item.previewSrc}}" class="slide-image"  binderror="errorGImg" data-errorsrc="swiperArr[{{index}}].src"></image>
+        <video hidden='{{item.ispasuse}}'  class="myVideo" id="myVideo" autoplay="{{item.isplay || !item.previewSrc}}" src="{{item.src}}" controls objectFit="contain" bindpause="videoPasuse"></video>
+      </swiper-item>
+      <swiper-item wx:else>
+        <image src="{{item.src}}" class="slide-image" bindtap="showPhotoBox" binderror="errorGImg" data-errorsrc="swiperArr[{{index}}].src"></image>
+        <view class="img-number">1/{{photoSwiperOptions.photoArr.length}}</view>
+      </swiper-item>
+    </block>
+  </swiper>
+  <!-- 顶部轮播 end -->
+  <!-- 自定义展示图片模板 -->
+  <df-preview-image isOpen="{{PhotoBoxShow}}" indicatorDots="{{photoSwiperOptions.indicatorDots}}" photos="{{photoSwiperOptions.photoArr}}"></df-preview-image>
+  <!-- 基本信息 start -->
+  <view class="item-base-info block">
+    <view class="title">{{troupeInfo.Name}}</view>
+    <view class="info-item clearfix">
+      <view class="types">{{troupeInfo.ShowTypeStr}}</view>
+      <view class="score"><df-scoreviewer score="{{troupeInfo.RatingDescription.RatingValue}}"></df-scoreviewer></view>
+    </view>
+    <view class="info-item clearfix">
+      <view class="section">
+        <text class="section-title">项目合作：</text>{{troupeInfo.PerformanceUseLinkerTel}}({{troupeInfo.PerformanceUseLinker}})</view>
+    </view>
+    <view class="info-item clearfix" bindtap='bindMap'>
+       <text class="address">{{troupeInfo.FullAddress}}</text>
+       <i class="iconfont icon-tiaozhuanjiantou"></i>
+    </view>
+  </view>
+  <!-- 基本信息 end -->
+  <!-- 标签页切换 start -->
+   <view class='tabSwitch'>
+    <view class="switchItemLine" bindtap="doSwitch"  data-isshowopera="true">
+      <span class="{{showOpera ? 'item-name-active' : 'item-name'}}">全部剧目</span>
+    </view>
+    <view class="switchItem" bindtap="doSwitch" data-isshowopera="false">
+      <span class="{{!showOpera ? 'item-name-active' : 'item-name'}}">剧团详情</span>
+    </view>
+  </view> 
+  <!-- 标签页切换 end -->
+  <!-- 全部剧目 start -->
+  <view class='allOpera' wx:if="{{showOpera}}">
+    <view class="loading" wx:if="{{showLoading}}">
+      <!-- 拼命加载中… -->
+    </view> 
+    <!-- 加载完成 start -->
+    <block wx:else>
+      <!-- 没有数据 start -->
+      <view class="no-list" wx:if="{{operaList.length <= 0}}">
+        <view class="no-data-img">
+          <image src="{{defaultImg.emptyResourceDefault}}"></image>
+          <view>剧团下暂无剧目</view>
+        </view>
+      </view> 
+      <!-- 没有数据 end -->
+      <!-- 有数据 start-->
+      <scroll-view wx:else>
+        <!-- 返回顶部 start -->
+        <view class="to-top" wx:if="{{showGoTop}}">
+          <image class="icon-to-top" src='{{defaultImg.iconToTop}}' bindtap="toTop"></image>
+        </view>
+        <!-- 返回顶部 end -->
+        <!-- 数据列表 start-->
+        <view class="data-list">
+          <!-- 数据item start-->
+          <view class="data-item clearfix" wx:for="{{operaList}}" data-url="/pages/operaDetail/operaDetail?id={{dataItem.ItemId}}&entityID={{dataItem.EntityId}}" bindtap="doViewTap" wx:for-index="dataIndex" wx:for-item="dataItem" wx:key="{{dataItem.ItemId}}">
+            <view class="{{dataItem.IsIncomeShare ? 'item-image-share' : 'item-image'}}">
+            <!-- {{dataItem.imgUrl}} -->
+              <image wx:if="{{dataItem.imgUrl}}" src="{{dataItem.imgUrl}}" binderror="errorImg" data-errorsrc="operaList[{{dataIndex}}].imgUrl"></image>
+              <image wx:else src="../../images/operaNoImg120X178.jpg"></image>
+            </view>
+            <view class="item-info">
+              <view class="item-title">{{dataItem.Name}}</view>
+              <view wx:if="{{dataItem.IsPublished}}" class="item-v3 clearfix">
+                <view class="priceTitle">演出价：</view>
+                <view wx:if="{{dataItem.IsPublished}}">
+                  <view class="price"><text>￥{{dataItem.MinShowPrice}}</text>/场 起</view>
+                  <view class="fixPrice">(可议价)</view>
+                </view>
+                <view wx:if="{{!dataItem.IsPublished}}" >
+                  <view class="price">暂未发布</view>
+                </view>              
+              </view>
+            </view>
+          </view>
+          <!-- 数据item  end -->
+        </view>
+        <!-- 数据列表 end -->
+        <!-- 数据尾部提示 start -->
+          <view class="data-tip">
+            <view class="loading-data" wx:if="{{hasMore}}">上拉加载</view>
+            <view class="no-more" wx:if="{{!hasMore}}">
+              <view class="img-line"><image src="../../images/icon_cry.png"></image></view>
+              <view>没有更多了</view> 
+            </view>
+          </view>
+          <!-- 数据尾部提示 end -->
+      </scroll-view>
+      <!-- 有数据 end -->
+    </block>
+    <!-- 加载完成 end -->
+  </view>
+  <!-- 全部剧目 end -->
+
+  <!-- 剧团详情  start-->
+  <view class='troupeDetail' wx:if="{{!showOpera}}">
+    <!-- 简介 start -->
+    <view wx:if="{{richIntro.hasValue}}" class="content-block block">
+       <df-richtextviewer title="简介" isExpand="true" richInfo="{{richIntro.richInfo}}"></df-richtextviewer> 
+    </view>
+    <!-- 简介 end -->
+  </view>
+  <!-- 剧团详情 end -->
+</view>

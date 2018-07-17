@@ -1,0 +1,37 @@
+<!--pages/filterCity/filterCity.wxml-->
+<view>
+  <!-- 城市选择的列表 -->
+  <view class="bottom-city-list" style='margin-top:{{marginTop}}rpx;'>
+    <view class="flex box box-lr">
+      <scroll-view class="flex groups box box-tb" scroll-y scroll-into-view="{{scrollIntoView}}" style="height: {{scrollViewHeight}}px;" bindscroll="bindscroll">
+        <block wx:for="{{allCitys}}" wx:for-item="group" wx:key="group">
+          <view class="flex" id="{{group.GroupName}}">
+            <view class="group-name">{{group.GroupName}}</view>
+            <view class="flex group-users">
+              <view wx:for="{{group.Citys}}" wx:for-item="city"  wx:key="city" wx:for-index="idx" class="user box box-lr" bindtap="clickCity" data-city="{{city}}">
+                <view class="flex user-name" style='{{idx===group.Citys.length-1?"border: none;":""}}'>{{city.CityCnName}}<text hidden="{{!city.IsSelected}}" style="color: #ff3549;float: right;margin-right: 50rpx;" class='iconfont icon-gouxuan'></text></view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </scroll-view>
+      <view class="nav box box-tb" style='margin-top:300rpx;'>
+        <view catchtap="tabLetter" data-index="{{item}}" wx:for="{{letters}}" wx:key="item" class="flex box box-align-center box-pack-center letter">
+          <!-- 选择侧边栏字母hover "  -->
+          <view class="letter-text-hover-selected" wx:if="{{hover_selected_show[index]}}"><text class="iconfont icon-rect-copy"></text><text>{{selected_letter}}</text></view>
+          <text class="letter-text {{selected_letter == item ? 'letter-actived' : ''}}">{{item}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="group-name group-active fixed-letter" style='top:{{marginTop}}rpx;' wx:if="{{title_selected_show}}">{{selected_letter}}</view>
+  </view>
+  <!-- 已选城市 -->
+  <view class="top-selected-city">
+      <view class="selected-city-title" bindtap='switchSelectedCity'><text>已选城市({{selectedCitys.length}}/5)</text><text class="iconfont icon-xiala {{isFolder?'isFolder':''}}"></text></view>
+      <view class="selected-city" wx:if="{{!isFolder}}">
+        <view class="selected-city-tip" wx:for="{{selectedCitys}}"  wx:key="item"><text class="selected-city-tip-content">{{item.CityCnName}}</text>
+        <icon type="clear" class="icon-clear selected-city-tip-clear" size="15" color="#dddddd" bindtap='clickClear' data-city="{{item}}"></icon>
+      </view>
+    </view>
+  </view>
+</view>

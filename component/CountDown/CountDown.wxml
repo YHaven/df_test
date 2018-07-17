@@ -1,0 +1,17 @@
+<!--component/CountDown/CountDown.wxml-->
+<view>
+  <view class="count-down">
+    <view wx:if="{{fomatType === 'ddHHmmss'}}">
+      <span class="days">{{timerResult.days}}</span>天<span class="hours">{{timerResult.hours}}</span>小时<span class="minutes">{{timerResult.minutes}}</span>分钟<span class="seconds">{{timerResult.seconds}}</span>秒 
+    </view>
+    <view  wx:if="{{fomatType == 'HHmm'}}">
+      <span class="hours">{{timerResult.hours}}</span>时<span class="minutes">{{timerResult.minutes}}</span>分
+    </view>
+    <view  wx:if="{{fomatType == 'HHmmss'}}">
+      <span class="hours">{{timerResult.hours}}</span>时<span class="minutes">{{timerResult.minutes}}</span>分<span class="seconds">{{timerResult.seconds}}</span>秒 
+    </view>
+    <view  wx:if="{{fomatType == 'mmss'}}">
+      <span class="minutes">{{timerResult.minutes}}</span>分<span class="seconds">{{timerResult.seconds}}</span>秒 
+    </view>
+  </view>
+</view>

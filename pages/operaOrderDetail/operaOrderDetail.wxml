@@ -1,0 +1,249 @@
+<import src="../../component/TimeoutBoard/TimeoutBoard.wxml"/>
+<!-- 请求超时模板 默认false-->
+<template is="TimeoutBoard" wx:if="{{netTimeOut}}"/>  
+
+<view class="container opera-order-detail" wx:if="{{!netTimeOut}}">
+  <top-msg-tips message="{{errorMsg}}" id="topMsgTips"></top-msg-tips>
+  <!-- 流程状态 start -->
+  <view class="flow-status">
+    <!-- <view class="one-line">内部流程审批中</view> -->
+     <!-- <view class="two-line">
+      <view>等待预约方支付预约金</view>
+      <view class="v-2">72小时00分00秒后 自动取消预约单</view>
+     </view> -->
+    <!-- <view class="one-line">等待受约方审核</view> -->
+    <view class="one-line" wx:if="{{tradeApplyDisplay.BookingStatus.Key >= 6}}">
+      <block>
+        <view class="">{{tradeApplyDisplay.BookingStatus.Name}}</view>
+      </block>
+    </view> 
+    <view class="one-line" wx:if="{{tradeApplyDisplay.BookingStatus.Key === 1}}">
+      <view class="" wx:if="{{tradeApplyDisplay.WorkFlowReturnStatus === null}}">待提交</view>
+      <view class="" wx:if="{{tradeApplyDisplay.WorkFlowReturnStatus === 0}}">内部审批中</view>
+      <view class="" wx:if="{{tradeApplyDisplay.WorkFlowReturnStatus === 1}}">内部审批通过</view>
+      <view class="" wx:if="{{tradeApplyDisplay.WorkFlowReturnStatus === 2}}">内部审批未通过</view>
+    </view>
+    
+    <view class="two-line" wx:if="{{tradeApplyDisplay.BookingStatus.Key === 4}}">
+      <view class="" wx:if="{{tradeApplyDisplay.WorkFlowReturnStatus === null}}">{{tradeApplyDisplay.BookingStatus.Name}}</view>
+      <view class="" wx:if="{{tradeApplyDisplay.WorkFlowReturnStatus === 0}}">支付预约金内部审批中</view>
+      <view class="" wx:if="{{tradeApplyDisplay.WorkFlowReturnStatus === 1}}">支付预约金内部审批通过</view>
+      <view class="" wx:if="{{tradeApplyDisplay.WorkFlowReturnStatus === 2}}">支付预约金内部审批未通过</view>
+      <view class="v-2"><df-countdown id='timeCountDown' class="timeCountDown" dateString="{{tradeApplyDisplay.StatusExpireTime}}" fomatType="HHmmss"></df-countdown>后 自动取消预约单</view>
+    </view>
+
+    <view class="one-line" wx:if="{{tradeApplyDisplay.BookingStatus.Key === 3}}">
+      <block>
+        <view class="">等待受约方审核</view>
+      </block>
+    </view>
+    <view class="one-line" wx:if="{{tradeApplyDisplay.BookingStatus.Key === 5}}">
+      <block>
+        <view class="">等待支付确认</view>
+      </block>
+    </view>
+
+  </view>
+  <!-- 流程状态 end -->
+
+  <!-- 预约人信息 start -->
+  <view class="block order-user">
+    <view class="info">
+      <view class="user-icon">
+        <view class="user-image">
+          <!-- <image src="{{defaultImg.userDefault}}"></image> -->
+          <text class="iconfont icon-yonghu"></text>
+        </view>
+      </view>
+      <view class="user-info">
+        <view class="label-for">预约人:</view>
+        <view class="value">
+          <view><text>{{tradeApplyDisplay.LinkerFullName}}</text> <text class="phone">{{' ' + tradeApplyDisplay.LinkerPhone}}</text></view>
+          <view class="entity">{{tradeApplyDisplay.VenueName?tradeApplyDisplay.VenueName:''}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="leave-mark" wx:if="{{tradeApplyDisplay.LeaveMessage && tradeApplyDisplay.LeaveMessage != ''}}">
+      <view class="title">预约方留言</view>
+      <view class="value">{{tradeApplyDisplay.LeaveMessage}}</view>
+    </view>
+  </view>
+  <!-- 预约人信息 end -->
+
+  <!-- 预约单信息 start -->
+  <view class="block order-info">
+    <view class="item-info">
+      <view class="troupe-name">{{troupeDisplay.Name}}</view>
+      <view class="opera-base" bindtap="doViewTap" data-url="/pages/operaDetail/operaDetail?id={{ItemDisplay.ItemId}}&entityID={{ItemDisplay.EntityId}}">
+        <view class="opera-image">
+          <!-- <image src="{{ItemDisplay.ImgUrl}}"></image> -->
+          <image wx:if="{{ItemDisplay.ImgUrl}}" src="{{ItemDisplay.ImgUrl}}" binderror="errorGImg" data-errorsrc="ItemDisplay.ImgUrl"></image>
+          <image wx:else src="../../images/operaNoImg120X178.jpg"></image>
+        </view>
+        <view class="opera-info">
+          <view class="opera-name">{{ItemDisplay.Name}}</view>
+          <view class="info-1 f-l clearfix" >
+            <text class="times">{{ItemDisplay.ShowMinutes}}分钟</text>
+            <text class="types">{{ItemDisplay.ShowType}}</text>
+          </view>
+          <view class="info-2">
+            <text class="first-show">首演：{{ItemDisplay.FirstShowDate || '暂无'}}</text>
+            <text class="show-people">巡演：{{ItemDisplay.TourShowActorCount ? ItemDisplay.TourShowActorCount + '人' : '未知' }}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+
+    <view class="show-schedule-list">
+      <view class="item-time">
+        <text class="title">剧组到达:</text>
+        <text class="time">{{tradeApplyDisplay.TeamArriveTime}}</text>
+      </view>
+      <view class="item-show-list">
+        <view class="show-item clearfix {{showMore?'show':'hide'}} {{dataIndex === 0 ?'first':'next'}}" wx:for="{{tradeApplyDisplay.Schedules}}" wx:for-index="dataIndex" wx:key="ScheduleBeginDatetime">
+          <!-- <view class="show-time" wx:if="{{item.ScheduleDatetime.status === 0}}">
+            <view class="title">第{{dataIndex+1}}场演出:</view>
+            <view class="time">
+              <view>{{item.ScheduleDatetime.timeStr}}</view>
+            </view>
+          </view> -->
+          <view class="show-time is-more-date">
+            <view class="title">第{{dataIndex+1}}场演出:</view>
+            <view class="time">
+              <view>{{item.ScheduleBeginDatetime}}<text class="start">起</text></view>
+              <view>{{item.ScheduleEndDatetime}}<text class="end">止</text></view>
+            </view>
+          </view>
+          <view class="show-price">
+            <view class="price">
+              <text class="point"></text><text>演出价：</text><text>¥{{item.Price}}</text>
+            </view>
+            <view class="eposit-price">
+              <text class="point"></text><text>预约金：</text><text class="s-price">¥{{item.EpositPrice}}</text>
+            </view>
+          </view>
+        </view>
+        <text class="iconfont icon-zhankai down-icon {{showMore?'up':''}}" wx:if="{{tradeApplyDisplay.Schedules.length > 1}}" bindtap="showMoreShows"></text>
+      </view>
+      <view class="item-time leave">
+        <text class="title">剧组离开:</text>
+        <text class="time">{{tradeApplyDisplay.TeamLeaveTime}}</text>
+      </view>
+    </view>
+    <view class="total-price common-form-2">
+      <view class="form-section">
+        <view class="section-title">演出价</view>
+        <view class="section-value">¥{{tradeApplyDisplay.TotalPrice}}</view>
+      </view>
+      <view class="form-section">
+        <view class="section-title">浮动费</view>
+        <view class="section-value">
+          <text class="iconfont icon-jiantou icon-jiantou{{tradeApplyDisplay.IsGrowUp ? '-up' : '-down'}}" wx:if="{{HasAddiPrice}}"></text>
+          ¥{{tradeApplyDisplay.AdditionalPriceAbs}}
+        </view>
+        <!-- <text class="iconfont icon-jiantou icon-jiantou-up"></text> -->
+      </view>
+      <view class="form-section">
+        <view class="section-title e-price">预约金:<text>¥{{tradeApplyDisplay.TotalEpositPrice}}</text></view>
+        <view class="section-value" style="color:#000000">总金额: ¥{{tradeApplyDisplay.FinalPrice}}</view>
+      </view>
+    </view>
+
+    <view class="schedule">
+      <text>场厅档期：</text><text class="times">{{tradeApplyDisplay.VenueScheduleBeginTime}} ~ {{tradeApplyDisplay.VenueScheduleEndTime}} </text>
+    </view>
+    <view class="schedule" wx:if="{{tradeApplyDisplay.ItemScheduleBeginTime && tradeApply.BookingStatusRecord.length >= 3}}">
+      <text>剧目档期：</text><text class="times">{{tradeApplyDisplay.ItemScheduleBeginTime}} ~ {{tradeApplyDisplay.ItemScheduleEndTime}} </text>
+    </view>
+    <view class="schedule" wx:if="{{(tradeApplyDisplay.SetStageBeginTime && tradeApply.BookingStatusRecord.length >= 3 &&tradeApply.BookingStatusRecord[tradeApply.BookingStatusRecord.length-1].NewStatus!==8) || (tradeApply.BookingStatusRecord[tradeApply.BookingStatusRecord.length-1].NewStatus===8 && tradeApply.BookingStatusRecord[tradeApply.BookingStatusRecord.length-2].NewStatus > 3)}}">
+      <text>装台时间：</text><text class="times">{{tradeApplyDisplay.SetStageBeginTime}} ~ {{tradeApplyDisplay.SetStageEndTime}} </text>
+    </view>
+    <view class="schedule" wx:if="{{(tradeApplyDisplay.CutStageBeginTime && tradeApply.BookingStatusRecord.length >= 3 && tradeApply.BookingStatusRecord[tradeApply.BookingStatusRecord.length-1].NewStatus!==8) || (tradeApply.BookingStatusRecord[tradeApply.BookingStatusRecord.length-1].NewStatus===8 && tradeApply.BookingStatusRecord[tradeApply.BookingStatusRecord.length-2].NewStatus > 3)}}">
+      <text>拆台时间：</text><text class="times">{{tradeApplyDisplay.CutStageBeginTime}} ~ {{tradeApplyDisplay.CutStageEndTime}} </text>
+    </view>
+
+    <!-- 付款信息 -->
+    <view class="pay-info order" wx:if="{{tradeApply.AboutBaseInfo && tradeApply.TheatreOrderScheduleBase.BookingStatus.Key > 3}}">
+      <view class="title">付款信息</view>
+      <view class="item"><text>银行户名：</text>{{tradeApply.AboutBaseInfo.BankAccountName}}</view>
+      <view class="item"><text>收款银行：</text>{{tradeApply.AboutBaseInfo.BankAccount}}</view>
+      <view class="item"><text>银行账号：</text>{{tradeApply.AboutBaseInfo.BankName}}</view>
+      <view class="item"><text style="word-spacing:6rpx;">联 行 号：</text>{{tradeApply.AboutBaseInfo.LinkBankNo}}</view>
+      <view class="item"><text>付款识别码：</text><text class="code">{{currentItem.Payments[0].PaymentIdCode}}</text></view>
+    </view>
+
+    <view class="order">
+      <view class="item" wx:if="{{tradeApplyDisplay.BookingStatus && tradeApplyDisplay.BookingStatus.Key !== 1 && tradeApplyDisplay.ApplyCode }}">预约单号： <text selectable="true">{{tradeApplyDisplay.ApplyCode}}</text></view>
+      <view class="item" wx:if="{{tradeApplyDisplay.BookingStatus && tradeApplyDisplay.BookingStatus.Key !== 1}}">下单时间：<text selectable="true">{{tradeApplyDisplay.ApplyCreateTime}}</text></view>
+      <view class="item" wx:else>生成时间：<text selectable="true">{{tradeApplyDisplay.ApplyCreateTime}}</text></view>
+      <view class="item" wx:if="{{tradeApply.BookingStatusRecord[2] && tradeApply.BookingStatusRecord[2].NewStatus === 4}}">审核时间：<text selectable="true">{{tradeApply.BookingStatusRecord[2].DataCreateDatetime}}</text></view>
+      <view class="item" wx:if="{{tradeApply.BookingStatusRecord[3] && tradeApply.BookingStatusRecord[3].NewStatus === 5}}">支付时间：<text selectable="true">{{tradeApply.BookingStatusRecord[3].DataCreateDatetime}}</text></view>
+      <view class="item" wx:if="{{tradeApply.BookingStatusRecord[4] && tradeApply.BookingStatusRecord[4].NewStatus === 6}}">确认时间：<text selectable="true">{{tradeApply.BookingStatusRecord[4].DataCreateDatetime}}</text></view>
+    </view>
+  </view>
+  <!-- 预约单信息 end -->
+
+  <!-- 操作 start -->
+  <view class="iyanyi-opration " wx:if="{{currentItem.BookingStatus.Key !== 8}}">
+
+    <block wx:if="{{currentItem.BookingStatus.Key === 1}}">
+      <block wx:if="{{currentItem.WorkFlowReturnStatus === 1 || currentItem.WorkFlowReturnStatus === 2}}">
+        <!-- 预约方内部流程审批通过 预约方内部流程审批失败-->
+        <button class="iyanyi-btn-warning" hover-class="iyanyi-btn-warning-hover" bindtap="submitOrder">提交预约单</button>
+        <button class="default" bindtap="cancelOrder">取消预约单</button>
+      </block>
+      <block wx:if="{{currentItem.WorkFlowReturnStatus === null || currentItem.WorkFlowReturnStatus === ''}}">
+        <button class="iyanyi-btn-warning" hover-class="iyanyi-btn-warning-hover" bindtap="submitOrder">提交预约单</button>
+        <button class="default" bindtap="cancelOrder">取消预约单</button>
+        <button class="default" data-url="/pages/operaOrderCreate/operaOrderCreate?tradeApplyId={{currentItem.TradeApplyRawId}}" bindtap="doViewTap">编辑预约单</button>
+      </block>
+    </block>
+
+    <block wx:if="{{currentItem.BookingStatus.Key === 4}}">
+      <block wx:if="{{currentItem.WorkFlowReturnStatus !== 0}}">
+        <!-- 预约方内部流程审批通过 预约方内部流程审批失败-->
+        <button class="iyanyi-btn-warning" hover-class="iyanyi-btn-warning-hover" data-url="/pages/payCenter/payCenter?id={{currentItem.TradeApplyRawId}}" bindtap="payment">付款</button>
+        <button class="default" bindtap="cancelOrder">取消预约单</button>
+      </block>
+      <block wx:if="{{currentItem.WorkFlowReturnStatus === 0}}">
+        <!-- 预约方内部流程审批通过 预约方内部流程审批失败-->
+        <button class="default" disabled="disabled">申请付款中</button>
+        <button class="default" bindtap="cancelOrder">取消预约单</button>
+      </block>
+    </block>
+    <block wx:if="{{currentItem.BookingStatus.Key === 5}}">
+      <view class="pay_ide">支付凭证
+        <view class="pay_ide_icon" bindtap="viewPaymentsImg" data-payurl="{{currentItem.Payments[0].PaymentCredenceUrl}}">
+          <image src="../../images/pay_ide_icon.png"></image>
+        </view>
+      </view>
+    </block>
+    <block wx:if="{{currentItem.BookingStatus.Key === 3}}">
+      <button class="default" data-index="{{dataIndex}}" bindtap="cancelOrder">取消预约单</button>
+    </block>
+    <block wx:if="{{currentItem.BookingStatus.Key === 6}}">
+      <button class="default" data-index="{{dataIndex}}" bindtap="cancelOrder">取消预约单</button>
+    </block>
+    <block wx:if="{{currentItem.BookingStatus.Key === 7}}">
+      <button class="default" data-index="{{dataIndex}}">评价</button>
+    </block>
+    <block wx:if="{{currentItem.WorkFlowReturnStatus !== null}}">
+      <button class="default" data-index="{{dataIndex}}">流程详情</button>
+    </block>
+    <!-- <button class="iyanyi-btn-warning" hover-class="iyanyi-btn-warning-hover" bindtap='submitOrder'>提交预约单</button>
+    <button class="default">取消预约单</button>
+    <button class="default">流程详情</button>
+    <button class="default">编辑预约单</button> -->
+    
+  </view>
+  <!-- 操作 end -->
+
+  <!-- 提交内部审批 start -->
+       <df-submit-inner-flow wx:if="{{showSubmitFlowBox}}" bindsubmitFlow="openSubmitFlow" bindhideFlowBox="hideFlowBox" receiverList="{{receiverList}}" workFlowFirstNodeMark="{{orderInfo.workFlowFirstNodeMark}}"></df-submit-inner-flow> 
+       <df-submit-inner-flow wx:if="{{showPaySubmitFlowBox}}" bindsubmitFlow="openSubmitFlow" bindhideFlowBox="hideFlowBox" receiverList="{{receiverList}}" workFlowFirstNodeMark="{{orderInfo.workFlowFirstNodeMark}}"></df-submit-inner-flow> 
+      <!-- <df-submit-inner-flow wx:if="{{true}}" bindsubmitFlow="submitFlow" bindhideFlowBox="hideFlowBox" receiverList="{{receiverList}}" workFlowFirstNodeMark="{{orderInfo.workFlowFirstNodeMark}}"></df-submit-inner-flow> -->
+        <df-check-phone-code wx:if="{{showCancelBox}}" bindcancelOrder="openCancelBox" bindhideCancelBox="hideCancelBox" phoneNumber="" codeAction="{{codeActionUrl}}" isPartyA="{{isPartyA}}" checkOnly="{{false}}"></df-check-phone-code>
+
+      <!-- 提交内部审批 end -->
+</view>

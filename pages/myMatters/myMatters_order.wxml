@@ -1,0 +1,43 @@
+
+<!--待提交待支付-->
+<view class="wrap" wx:if="{{waitForSubmit.length !== 0 || waitForPay.length !== 0}}">
+  <view class="submitWrap">
+    <view class="wrapTitle">待提交
+      <text class="tip-num" wx:if="{{waitForSubmit.length>0}}">{{waitForSubmit.length}}</text>
+    </view>
+    <view class="itemWrap">
+      <view class="itemTitle">20171120-世界经典原版音乐剧《猫》Cats +百老汇浪漫音乐剧《I Do！I Do！》中文版+外百老汇浪漫爱情-杭州大剧院【歌剧院】</view>
+      <view class="itemContent">
+        <text class="">2017-12-09  11:09:12</text>
+        <view class="buttomWrap">
+          <button class="" loading="{{loading}}" bindtap="btnSubmit" hover-class="longTap">提交</button>
+          <button class="" loading="{{loading}}" bindtap="cancelSubmit" hover-class="longTap">取消</button>
+        </view>
+      </view>
+    </view>
+    <view class="itemMore" wx:if="{{waitForSubmit.length>3}}" bindtap="jumpToMore">查看更多</view>
+  </view>
+  <view class="payWrap">
+    <view class="wrapTitle">待支付
+      <text class="tip-num" wx:if="{{waitForPay.length>0}}">{{waitForPay.length}}</text>
+    </view>
+    <view class="itemWrap">
+      <view class="itemTitle">20171120-世界经典原版音乐剧《猫》Cats +百老汇浪漫音乐剧《I Do！I Do！》中文版+外百老汇浪漫爱情-杭州大剧院【歌剧院】</view>
+      <view class="itemContent">
+          <text class="">2017-12-09  11:09:12</text>
+          <view class="buttomWrap">
+            <button class="" loading="{{loading}}" bindtap="btnPay" hover-class="longTap">支付</button>
+            <button class="" loading="{{loading}}" bindtap="cancelPay" hover-class="longTap">取消</button>
+          </view>
+      </view>
+    </view>
+    <view class="itemMore" wx:if="{{waitForPay.length>3}}" bindtap="jumpToMore">查看更多</view>
+  </view>
+
+</view>
+<!--无提交和无支付-->
+<view class="wrap" wx:else>
+  <view class="noOrders">
+    <image src=""></image>
+  </view>
+</view>

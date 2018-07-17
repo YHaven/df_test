@@ -1,0 +1,8 @@
+/* component/IdealInputBox/IdealInputBox.wxss */
+/* input */
+.input-placeholder{color: #b2b2b2;}
+.ideal-input-box{position: relative;}
+.ideal-input-box input{padding-left: 14rpx;}
+.ideal-input-box .ideal-list{position: absolute;background: #ffffff;width: 100%;border: 1px solid #eeeeee;margin-left: -1rpx;z-index: 11;padding: 14rpx 0rpx;}
+.ideal-input-box .ideal-list-item{padding:0rpx 14rpx;}
+.no-data{text-align: center;color: #a9a9a9;}

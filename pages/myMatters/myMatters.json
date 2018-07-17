@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "受约单",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "df-bottom-nav": "../../component/BottomNav/BottomNav",
+    "top-msg-tips": "../../component/TopMsgTips/TopMsgTips"
+  }
+}

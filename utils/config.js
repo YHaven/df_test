@@ -19,7 +19,7 @@ module.exports = {
   ossHost: ossHost,
   resourceHost: resourceHost,
   userImgUrl: userImgUrl,
-  appId: "wx68a2f44cb71067b6",
+  appId: "",
   appKey: "",
   // homepage: '/pages/my/my',
   homepage: '/pages/entityList/entityList',
